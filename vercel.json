@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "name": "multiply-2819",
+  "routes": [
+    { "src": "/es",       "dest": "/es/index.html"    },
+    { "src": "/es/(.*)", "dest": "/es/index.html"     },
+    { "src": "/fr",       "dest": "/fr/index.html"    },
+    { "src": "/fr/(.*)", "dest": "/fr/index.html"     },
+    { "src": "/ng",       "dest": "/ng/index.html"    },
+    { "src": "/ng/(.*)", "dest": "/ng/index.html"     },
+    { "src": "/admin",   "dest": "/admin/index.html"  },
+    { "src": "/",        "dest": "/index.html"        }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options",    "value": "nosniff"        },
+        { "key": "X-Frame-Options",           "value": "DENY"           },
+        { "key": "Referrer-Policy",           "value": "strict-origin"  },
+        { "key": "Cache-Control",             "value": "public, max-age=3600, stale-while-revalidate=86400" }
+      ]
+    }
+  ]
+}

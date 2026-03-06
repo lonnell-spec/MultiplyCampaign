@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:title" content="Multiply — Share the Message · 2819 Church">
+<meta property="og:description" content="Download assets, post, and invite. E don rise — spread the message across Nigeria.">
+<title>Multiply — Share · 2819 Church</title>
+<style>
+/* ─── TOKENS ─────────────────────────────────────────── */
+:root {
+  --red:     #D81F1A;
+  --black:   #0A0A0A;
+  --cream:   #FFFFFF;
+  --bg:      #F5F4F2;
+  --surface: #FFFFFF;
+  --border:  #E2E0DC;
+  --muted:   #888580;
+  --ff:      'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --r:       10px;
+  --ease:    0.2s ease;
+  --max:     640px;
+}
+
+/* ─── RESET ──────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--black);font-family:var(--ff);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
+
+/* ─── KEYFRAMES ──────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%,100% { transform: scale(1); }
+  50%      { transform: scale(1.06); }
+}
+@keyframes lineGrow {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* ─── NAV ────────────────────────────────────────────── */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+  padding: 0 20px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  animation: fadeIn 0.4s ease both;
+}
+.nav-logo {
+  font-size: 17px; font-weight: 800;
+  letter-spacing: -0.02em; color: var(--black);
+  display: flex; align-items: baseline; gap: 1px;
+}
+.nav-logo .dot { color: var(--red); }
+.nav-logo .church {
+  font-size: 17px; font-weight: 800;
+  letter-spacing: -0.02em; text-transform: uppercase;
+  color: var(--red); margin-left: 2px;
+}
+.nav-right {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ─── HERO ───────────────────────────────────────────── */
+.hero {
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 20px 36px;
+  max-width: var(--max);
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+/* Decorative X in background */
+.hero::before {
+  content: '×';
+  position: absolute;
+  right: -10px; top: -20px;
+  font-size: 220px;
+  font-weight: 900;
+  color: var(--red);
+  opacity: 0.04;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  animation: fadeIn 1.2s ease 0.3s both;
+}
+
+.hero-eyebrow {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 10px;
+  animation: fadeUp 0.5s ease 0.1s both;
+}
+.hero-title {
+  font-size: clamp(52px, 14vw, 80px);
+  font-weight: 800; letter-spacing: -0.03em;
+  line-height: 0.97; margin-bottom: 18px;
+  color: var(--black);
+  animation: fadeUp 0.55s ease 0.2s both;
+}
+.hero-title em { font-style: normal; color: var(--red); }
+
+/* Animated underline under title */
+.hero-line {
+  width: 48px; height: 3px;
+  background: var(--red);
+  border-radius: 2px;
+  margin-bottom: 18px;
+  animation: lineGrow 0.6s ease 0.55s both;
+}
+
+.hero-sub {
+  font-size: 14px; color: var(--muted);
+  max-width: 400px; line-height: 1.7;
+  animation: fadeUp 0.5s ease 0.4s both;
+}
+.hero-sub strong { color: var(--black); font-weight: 600; }
+
+/* ─── TABS ───────────────────────────────────────────── */
+.tabs-wrap {
+  max-width: var(--max); margin: 0 auto;
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 52px; z-index: 40;
+  animation: fadeIn 0.4s ease 0.5s both;
+}
+.tabs {
+  display: flex;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; padding: 0 20px;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab-btn {
+  flex-shrink: 0;
+  padding: 14px 16px;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  border-bottom: 2px solid transparent;
+  transition: color var(--ease), border-color var(--ease), transform 0.15s ease;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+.tab-btn::after {
+  content: '';
+  position: absolute; bottom: -2px; left: 16px; right: 16px;
+  height: 2px; background: var(--red);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.25s ease;
+  border-radius: 2px;
+}
+.tab-btn:hover { color: var(--black); }
+.tab-btn.active { color: var(--black); }
+.tab-btn.active::after { transform: scaleX(1); }
+
+/* ─── CONTENT ────────────────────────────────────────── */
+.content {
+  max-width: var(--max); margin: 0 auto;
+  padding: 28px 20px 64px;
+}
+
+.platform-intro { margin-bottom: 24px; }
+.platform-intro h2 {
+  font-size: 20px; font-weight: 700;
+  letter-spacing: -0.02em; margin-bottom: 4px;
+}
+.platform-intro p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+.block-label {
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.block-label .format-tag {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  opacity: 0.65;
+}
+
+/* Add responsive mobile padding */
+@media (max-width: 480px) {
+  .content { padding: 20px 16px 52px; }
+  .hero { padding: 28px 16px 28px; }
+  .hero-title { font-size: clamp(44px, 13vw, 70px); }
+  .tabs-wrap, .nav { padding: 0 16px; }
+  .tabs { padding: 0 16px; }
+  .share-block { padding: 18px 16px; }
+  .hashtag-block { padding: 16px; }
+  .card-foot { padding: 8px 10px; }
+  .card-name { font-size: 11px; }
+  .dl-btn { padding: 7px 10px; font-size: 10px; min-width: 80px; }
+  .handle-row { padding: 10px 12px; }
+  .handle-info strong { font-size: 13px; }
+  .asset-grid { gap: 8px; }
+  .footer-inner { padding: 0; }
+}
+
+/* ─── ASSET GRID ─────────────────────────────────────── */
+.asset-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px; margin-bottom: 28px;
+}
+.asset-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+.asset-card:hover {
+  box-shadow: 0 0 0 1.5px var(--red);
+  transform: translateY(-2px);
+}
+
+/* Thumbnail */
+.thumb {
+  position: relative;
+  background: #EDECEA;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.thumb.sq  { aspect-ratio: 1/1; }
+.thumb.vrt { aspect-ratio: 9/16; }
+.thumb.lnd { aspect-ratio: 16/9; }
+.thumb img { width:100%; height:100%; object-fit:cover; }
+.thumb-ph {
+  display: flex; align-items: center; justify-content: center;
+  width:100%; height:100%; padding:12px;
+  background: linear-gradient(135deg, #F0EDEA 0%, #E8E5E2 100%);
+}
+.thumb-ph-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: #C0BAB4; text-align: center; line-height: 1.4;
+}
+.thumb-tag {
+  position: absolute; top:8px; left:8px;
+  background: var(--red); color:#fff;
+  font-size:9px; font-weight:700;
+  letter-spacing:0.08em; text-transform:uppercase;
+  padding:3px 7px; border-radius:4px;
+}
+
+/* Card footer */
+.card-foot {
+  padding: 10px 12px;
+  display: flex; align-items: center;
+  justify-content: space-between; gap:8px;
+  border-top: 1px solid var(--border);
+}
+.card-name {
+  font-size:12px; font-weight:600;
+  white-space:nowrap; overflow:hidden;
+  text-overflow:ellipsis; color:var(--black);
+}
+.card-size { font-size:10px; color:var(--muted); margin-top:1px; }
+
+/* ─── DOWNLOAD BUTTON ────────────────────────────────── */
+.dl-btn {
+  display: inline-flex; align-items: center;
+  justify-content: center; gap: 5px;
+  padding: 8px 14px;
+  border-radius: 7px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  background: var(--red); color: #fff;
+  flex-shrink: 0; min-width: 90px;
+  position: relative; overflow: hidden;
+  transition: opacity var(--ease), transform 0.15s ease, box-shadow 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+/* Shimmer sweep on hover */
+.dl-btn::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.2) 50%, transparent 60%);
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.dl-btn:hover::before { opacity: 1; animation: shimmer 0.6s ease; }
+.dl-btn:hover { box-shadow: 0 0 0 2px var(--red); }
+.dl-btn:active { transform: scale(0.93); opacity: 0.85; }
+.dl-btn.fired {
+  background: #2e7d32;
+  animation: pulse 0.3s ease;
+}
+.dl-btn svg {
+  width:11px; height:11px;
+  stroke:currentColor; fill:none;
+  stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round;
+  flex-shrink:0;
+}
+
+/* ─── CAPTION BLOCK ──────────────────────────────────── */
+.caption-block { margin-bottom: 28px; }
+.caption-list  { display: grid; gap: 10px; }
+.caption-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 14px;
+  display: flex; align-items: flex-start; gap: 12px;
+  transition: box-shadow 0.2s ease;
+}
+.caption-card:hover { box-shadow: 0 0 0 1.5px var(--red); }
+.caption-text {
+  flex:1; font-size:13px;
+  line-height:1.65; color:var(--black);
+}
+.copy-btn {
+  flex-shrink:0;
+  padding:8px 14px; border-radius:7px;
+  font-size:11px; font-weight:700;
+  letter-spacing:0.06em; text-transform:uppercase;
+  border:1.5px solid var(--border);
+  color:var(--muted); background:transparent;
+  transition:all var(--ease);
+  -webkit-tap-highlight-color:transparent;
+}
+.copy-btn:hover { border-color: var(--red); color: var(--black); background: transparent; }
+.copy-btn.done { border-color:#2e7d32; color:#2e7d32; }
+
+/* ─── SHARE / HANDLES SECTION ────────────────────────── */
+.share-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 24px;
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.share-block::before {
+  content: '×';
+  position: absolute;
+  right: -8px; bottom: -20px;
+  font-size: 140px; font-weight: 900;
+  color: var(--red); opacity: 0.04;
+  line-height: 1; pointer-events: none; user-select: none;
+}
+.share-block .block-label {
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.share-heading {
+  font-size: 22px; font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--black); margin-bottom: 4px;
+}
+.share-heading em { font-style:normal; color: var(--red); }
+.share-sub {
+  font-size: 13px; color: var(--muted);
+  margin-bottom: 20px; line-height: 1.5;
+}
+
+.handles-list { display: grid; gap: 8px; }
+.handle-row {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+.handle-row:hover {
+  border-color: var(--red);
+  background: var(--bg);
+}
+.handle-platform {
+  display: flex; align-items: center; gap: 10px;
+}
+.handle-icon {
+  width: 36px; height: 36px;
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.handle-icon svg { width: 18px; height: 18px; }
+.handle-icon.ig  { background: linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045); }
+.handle-icon.tt  { background: #000; }
+.handle-icon.fb  { background: #1877F2; }
+.handle-icon.yt  { background: #FF0000; }
+.handle-icon.x   { background: #000; }
+
+.handle-info strong {
+  display: block;
+  font-size: 14px; font-weight: 700;
+  color: var(--black); letter-spacing: -0.01em;
+}
+.handle-info span {
+  font-size: 11px; color: var(--muted);
+  font-weight: 500;
+}
+.handle-copy {
+  flex-shrink: 0;
+  padding: 7px 13px; border-radius: 7px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  border: 1.5px solid var(--border);
+  color: var(--muted);
+  background: transparent;
+  transition: all 0.18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.handle-copy:hover {
+  border-color: var(--red);
+  color: var(--black);
+  background: transparent;
+}
+.handle-copy.done {
+  border-color: #2e7d32; color: #2e7d32;
+}
+
+/* ─── HASHTAG BLOCK ──────────────────────────────────── */
+.hashtag-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px; margin-bottom: 4px;
+}
+.hashtag-primary {
+  font-size: 28px; font-weight: 800;
+  letter-spacing: -0.02em; color: var(--red);
+  margin-bottom: 4px; cursor: pointer;
+  display: inline-block;
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s ease;
+}
+.hashtag-primary:hover { opacity: 0.75; }
+.hashtag-note { font-size:12px; color:var(--muted); margin-bottom:14px; }
+.hashtag-pills { display:flex; flex-wrap:wrap; gap:8px; }
+.pill {
+  padding:6px 13px; border:1.5px solid var(--border);
+  border-radius:100px; font-size:12px; font-weight:600;
+  color:var(--black); background:var(--bg); cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.pill:hover { border-color: var(--red); background: var(--bg); }
+.pill:active { opacity:0.65; }
+
+/* Digital Disciple tab — subtle distinction */
+.dd-tab { position: relative; }
+.dd-tab::before {
+  content: '🌍';
+  font-size: 10px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+/* Digital Disciple paired rows */
+.dd-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 4px;
+}
+.dd-col { display: flex; flex-direction: column; }
+.dd-col .asset-grid {
+  grid-template-columns: 1fr;
+  margin-bottom: 0;
+}
+@media (max-width: 400px) {
+  .dd-row { grid-template-columns: 1fr; }
+}
+.panel { display: none; }
+.panel.active {
+  display: block;
+  animation: panelIn 0.3s ease both;
+}
+
+/* ─── FOOTER ─────────────────────────────────────────── */
+.footer {
+  background: var(--cream);
+  border-top: 1px solid var(--border);
+  padding: 28px 20px;
+}
+.footer-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.footer-logo { font-size:16px; font-weight:800; letter-spacing:-0.01em; }
+.footer-logo span { color:var(--red); }
+.footer-address { font-size:12px; color:var(--muted); line-height:1.8; }
+.footer-socials { display:flex; gap:20px; flex-wrap:wrap; }
+.footer-socials a {
+  font-size:12px; font-weight:600;
+  letter-spacing:0.05em; text-transform:uppercase;
+  color:var(--muted);
+  transition: color var(--ease);
+}
+.footer-socials a:hover { color:var(--black); }
+
+/* ─── TOAST ──────────────────────────────────────────── */
+.toast {
+  position:fixed; bottom:20px; left:50%;
+  transform:translateX(-50%) translateY(64px);
+  background:var(--black); color:#fff;
+  font-size:13px; font-weight:500;
+  padding:11px 20px; border-radius:100px;
+  z-index:200; opacity:0;
+  transition:transform 0.25s ease, opacity 0.25s ease;
+  white-space:nowrap; pointer-events:none;
+  display:flex; align-items:center; gap:8px;
+}
+.toast::before {
+  content:'✓'; 
+  background: var(--red);
+  color:#fff; width:18px; height:18px;
+  border-radius:50%; display:flex;
+  align-items:center; justify-content:center;
+  font-size:11px; font-weight:800;
+  flex-shrink:0;
+}
+.toast.show {
+  transform:translateX(-50%) translateY(0);
+  opacity:1;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">2819<span class="dot">.</span><span class="church">Church</span></div>
+  <div class="nav-right">Multiply</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Ojo Ajinde · Share Campaign — Nigeria</p>
+  <h1 class="hero-title">Mult<em>iply</em><br>the Word.</h1>
+  <div class="hero-line"></div>
+  <p class="hero-sub">Ihinrere (the gospel) ntan lati eniyan si eniyan. <strong>Download an asset, post it with purpose, and invite someone by name.</strong> You do not need a platform — you need a purpose. Ẹsẹ ifẹ rẹ ni ilẹ-oko ihinrere rẹ. Your feed is your mission field.</p>
+</div>
+
+<!-- TABS -->
+<div class="tabs-wrap">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('instagram',this)">Instagram</button>
+    <button class="tab-btn" onclick="switchTab('tiktok',this)">TikTok</button>
+    <button class="tab-btn" onclick="switchTab('facebook',this)">Facebook</button>
+    <button class="tab-btn" onclick="switchTab('video',this)">Video</button>
+    <button class="tab-btn dd-tab" onclick="switchTab('digital',this)">Digital Disciple</button>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- ── INSTAGRAM ─────────────────────────────────── -->
+  <div class="panel active" id="panel-instagram">
+    <div class="platform-intro">
+      <h2>Instagram</h2>
+      <p><strong>Step 1 — Download:</strong> Tap the Download button on any asset below. It will save to your camera roll.<br><br><strong>Step 2 — Post:</strong> Open Instagram, tap the + icon, and select the saved image. Add the caption and hashtags below.<br><br><strong>Step 3 — Invite:</strong> Tag someone specific in your caption or send them the post directly.</p>
+    </div>
+
+    <div class="block-label">Post <span class="format-tag">1:1</span></div>
+    <div class="asset-grid" id="grid-ig-post"></div>
+
+    <div class="block-label">Story <span class="format-tag">9:16</span></div>
+    <div class="asset-grid" id="grid-ig-story"></div>
+
+    <div class="caption-block">
+      <div class="block-label">Captions</div>
+      <div class="caption-list" id="caps-instagram"></div>
+    </div>
+
+    <div class="share-block" id="share-instagram">
+      <div class="block-label">Share</div>
+      <h2 class="share-heading">Tag &amp; <em>Mention</em></h2>
+      <p class="share-sub">Copy our handle and drop it in your post, story, or caption so your followers can find us.</p>
+      <div class="handles-list" id="handles-instagram"></div>
+    </div>
+
+    <div class="hashtag-block">
+      <div class="block-label">Hashtags</div>
+      <div class="hashtag-primary" onclick="copyText('#Multiply2819')">#Multiply2819</div>
+      <p class="hashtag-note">Tap to copy. Use on every post.</p>
+      <div class="hashtag-pills">
+        <div class="pill" onclick="copyText('#2819Church')">#2819Church</div>
+        <div class="pill" onclick="copyText('#ResurrectionSunday')">#ResurrectionSunday</div>
+        <div class="pill" onclick="copyText('#HesRisen')">#HesRisen</div>
+        <div class="pill" onclick="copyText('#Atlanta')">#Atlanta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TIKTOK ────────────────────────────────────── -->
+  <div class="panel" id="panel-tiktok">
+    <div class="platform-intro">
+      <h2>TikTok</h2>
+      <p><strong>Step 1 — Download:</strong> Tap Download and save the video or graphic to your camera roll.<br><br><strong>Step 2 — Post:</strong> Open TikTok, tap the + button, and select the file from your gallery. Add the caption and hashtags.<br><br><strong>Step 3 — Invite:</strong> Use the duet, stitch, or reply features to keep the conversation going — or just tag someone who needs to see this.</p>
+    </div>
+
+    <div class="block-label">Graphic <span class="format-tag">9:16</span></div>
+    <div class="asset-grid" id="grid-tt-graphic"></div>
+
+    <div class="block-label">Video <span class="format-tag">9:16</span></div>
+    <div class="asset-grid" id="grid-tt-video"></div>
+
+    <div class="caption-block">
+      <div class="block-label">Captions</div>
+      <div class="caption-list" id="caps-tiktok"></div>
+    </div>
+
+    <div class="share-block">
+      <div class="block-label">Share</div>
+      <h2 class="share-heading">Tag &amp; <em>Mention</em></h2>
+      <p class="share-sub">Copy our handle and drop it in your video description or comments so people can find us.</p>
+      <div class="handles-list" id="handles-tiktok"></div>
+    </div>
+
+    <div class="hashtag-block">
+      <div class="block-label">Hashtags</div>
+      <div class="hashtag-primary" onclick="copyText('#Multiply2819')">#Multiply2819</div>
+      <p class="hashtag-note">Tap to copy. Use on every video.</p>
+      <div class="hashtag-pills">
+        <div class="pill" onclick="copyText('#2819Church')">#2819Church</div>
+        <div class="pill" onclick="copyText('#ResurrectionSunday')">#ResurrectionSunday</div>
+        <div class="pill" onclick="copyText('#ChurchTok')">#ChurchTok</div>
+        <div class="pill" onclick="copyText('#HesRisen')">#HesRisen</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FACEBOOK ───────────────────────────────────── -->
+  <div class="panel" id="panel-facebook">
+    <div class="platform-intro">
+      <h2>Facebook</h2>
+      <p><strong>Step 1 — Download:</strong> Tap Download to save the image to your device.<br><br><strong>Step 2 — Post:</strong> Open Facebook, tap Photo/Video, and select the saved file. Paste the caption below and post to your feed, story, or a group.<br><br><strong>Step 3 — Invite:</strong> Tag friends directly in your post or use Facebook's native Share button to send it to someone in a message.</p>
+    </div>
+
+    <div class="block-label">Post <span class="format-tag">1:1</span></div>
+    <div class="asset-grid" id="grid-fb-post"></div>
+
+    <div class="block-label">Story <span class="format-tag">9:16</span></div>
+    <div class="asset-grid" id="grid-fb-story"></div>
+
+    <div class="caption-block">
+      <div class="block-label">Captions</div>
+      <div class="caption-list" id="caps-facebook"></div>
+    </div>
+
+    <div class="share-block">
+      <div class="block-label">Share</div>
+      <h2 class="share-heading">Tag &amp; <em>Mention</em></h2>
+      <p class="share-sub">Copy our handle and mention us in your post so your network can find the church.</p>
+      <div class="handles-list" id="handles-facebook"></div>
+    </div>
+
+    <div class="hashtag-block">
+      <div class="block-label">Hashtags</div>
+      <div class="hashtag-primary" onclick="copyText('#Multiply2819')">#Multiply2819</div>
+      <p class="hashtag-note">Tap to copy. Use on every post.</p>
+      <div class="hashtag-pills">
+        <div class="pill" onclick="copyText('#2819Church')">#2819Church</div>
+        <div class="pill" onclick="copyText('#ResurrectionSunday')">#ResurrectionSunday</div>
+        <div class="pill" onclick="copyText('#HesRisen')">#HesRisen</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── VIDEO ─────────────────────────────────────── -->
+  <div class="panel" id="panel-video">
+    <div class="platform-intro">
+      <h2>Video</h2>
+      <p><strong>Step 1 — Download:</strong> Tap Download to save the video to your camera roll.<br><br><strong>Step 2 — Post:</strong> Upload to YouTube, Instagram Reels, TikTok, or Facebook depending on the format. Landscape works best for YouTube and Facebook Watch. Vertical is built for Reels and TikTok.<br><br><strong>Step 3 — Invite:</strong> Send the video directly to someone in a DM and ask them by name to come.</p>
+    </div>
+
+    <div class="block-label">Landscape <span class="format-tag">16:9</span></div>
+    <div class="asset-grid" id="grid-vid-land"></div>
+
+    <div class="block-label">Vertical <span class="format-tag">9:16</span></div>
+    <div class="asset-grid" id="grid-vid-vert"></div>
+
+    <div class="block-label">Square <span class="format-tag">1:1</span></div>
+    <div class="asset-grid" id="grid-vid-sq"></div>
+
+    <div class="share-block">
+      <div class="block-label">Share</div>
+      <h2 class="share-heading">Tag &amp; <em>Mention</em></h2>
+      <p class="share-sub">After posting your video, tag us so we can reshare and amplify your post.</p>
+      <div class="handles-list" id="handles-video"></div>
+    </div>
+  </div>
+
+  <!-- ── DIGITAL DISCIPLE ───────────────────────────── -->
+  <div class="panel" id="panel-digital">
+    <div class="platform-intro">
+      <h2 id="dd-intro-head">Digital Disciple — Nigeria</h2>
+      <div id="dd-intro-body">2819 Church has a history with Nigeria and the continent of Africa. The Multiply message belongs to Lagos, Abuja, Port Harcourt, and every community in between. You are not far — you are family. <strong>Post this. Tag someone. Stream live with your people.</strong> Titi gbogbo eniyan o ti gbọ — Until all have heard. Matthew 28:19.</div>
+    </div>
+
+    <!-- Row 1: IG Post + IG Story -->
+    <div class="dd-row">
+      <div class="dd-col">
+        <div class="block-label">Instagram Post <span class="format-tag">1:1</span></div>
+        <div class="asset-grid" id="grid-dd-ig-post"></div>
+      </div>
+      <div class="dd-col">
+        <div class="block-label">Instagram Story <span class="format-tag">9:16</span></div>
+        <div class="asset-grid" id="grid-dd-ig-story"></div>
+      </div>
+    </div>
+
+    <!-- Row 2: TikTok + Facebook -->
+    <div class="dd-row">
+      <div class="dd-col">
+        <div class="block-label">TikTok <span class="format-tag">9:16</span></div>
+        <div class="asset-grid" id="grid-dd-tiktok"></div>
+      </div>
+      <div class="dd-col">
+        <div class="block-label">Facebook <span class="format-tag">1:1</span></div>
+        <div class="asset-grid" id="grid-dd-facebook"></div>
+      </div>
+    </div>
+
+    <!-- Row 3: Video full width -->
+    <div class="block-label">Video <span class="format-tag">9:16</span></div>
+    <div class="asset-grid" id="grid-dd-video"></div>
+
+    <div class="caption-block">
+      <div class="block-label">Captions</div>
+      <div class="caption-list" id="caps-digital"></div>
+    </div>
+
+    <div class="share-block">
+      <div class="block-label">Share</div>
+      <h2 class="share-heading">Tag &amp; <em>Mention</em></h2>
+      <p class="share-sub">Tag us wherever you are in the world. We are watching, praying for you by name, and cheering on every share. The digital family is global — and growing.</p>
+      <div class="handles-list" id="handles-digital"></div>
+    </div>
+
+    <div class="hashtag-block">
+      <div class="block-label">Hashtags</div>
+      <div class="hashtag-primary" onclick="copyText('#Multiply2819')">#Multiply2819</div>
+      <p class="hashtag-note">Tap to copy. Use on every post.</p>
+      <div class="hashtag-pills">
+        <div class="pill" onclick="copyText('#2819Church')">#2819Church</div>
+        <div class="pill" onclick="copyText('#ResurrectionSunday')">#ResurrectionSunday</div>
+        <div class="pill" onclick="copyText('#HesRisen')">#HesRisen</div>
+        <div class="pill" onclick="copyText('#GlobalChurch')">#GlobalChurch</div>
+        <div class="pill" onclick="copyText('#DigitalDisciple')">#DigitalDisciple</div>
+      </div>
+    </div>
+  </div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Mult<em style="font-style:normal;color:var(--red)">iply</em><span style="color:var(--red)">.</span><span style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--red);margin-left:3px;">Church</span></div>
+    <div class="footer-address">
+      3350 Greenbriar Pkwy SW · Atlanta, GA<br>
+      Sundays: 8A · 10:30A · 1P
+    </div>
+    <div class="footer-socials">
+      <a href="https://instagram.com/2819church" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://tiktok.com/@2819church" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://facebook.com/2819church" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://youtube.com/@2819church" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://2819church.org" target="_blank" rel="noopener">2819church.org</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+// ─── SUPABASE ANALYTICS ───────────────────────────────
+const REGION = 'ng';
+const _SB_URL  = 'https://qtutkgyklxgcdmmivipp.supabase.co';
+const _SB_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0dXRrZ3lrbHhnY2RtbWl2aXBwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4Mzc2NTAsImV4cCI6MjA4ODQxMzY1MH0.eV8mUOR7OboOuOeDsJDQXXBJD2c4LVRwRdagwuZtBqA';
+
+async function trackEvent(action, platform, assetName = '') {
+  try {
+    await fetch(_SB_URL + '/rest/v1/share_events', {
+      method:  'POST',
+      headers: {
+        'Content-Type':  'application/json',
+        'apikey':        _SB_KEY,
+        'Authorization': 'Bearer ' + _SB_KEY,
+        'Prefer':        'return=minimal',
+      },
+      body: JSON.stringify({ region: REGION, action, platform, asset_name: assetName }),
+    });
+  } catch(e) { /* silent fail — never block UX */ }
+}
+
+// ─── ASSET DATA ──────────────────────────────────────────
+// Fill url: '' with real CDN/Drive URLs before launch.
+const ASSETS = {
+  'ig-post':    [
+    { name:'Multiply 1',       ratio:'sq',  url:'', size:'3.2MB' },
+    { name:'Multiply 2',       ratio:'sq',  url:'', size:'2.9MB' },
+    { name:'Invite – Church',  ratio:'sq',  url:'', size:'2.7MB' },
+    { name:'Invite – Church 2',ratio:'sq',  url:'', size:'3.0MB' },
+  ],
+  'ig-story':   [
+    { name:'Multiply Story',   ratio:'vrt', url:'', size:'4.0MB' },
+    { name:'Invite – Church',  ratio:'vrt', url:'', size:'3.8MB' },
+    { name:'Invite Story 2',   ratio:'vrt', url:'', size:'3.6MB' },
+  ],
+  'tt-graphic': [
+    { name:'Multiply – TT',    ratio:'vrt', url:'', size:'4.1MB' },
+    { name:'Invite – Church',  ratio:'vrt', url:'', size:'3.9MB' },
+  ],
+  'tt-video':   [
+    { name:'Campaign Reel',    ratio:'vrt', url:'', size:'22MB'  },
+    { name:'Short Cut – 30s',  ratio:'vrt', url:'', size:'14MB'  },
+  ],
+  'fb-post':    [
+    { name:'Multiply – FB',    ratio:'sq',  url:'', size:'3.1MB' },
+    { name:'Invite – Church',  ratio:'sq',  url:'', size:'2.8MB' },
+    { name:'Invite – Church 2',ratio:'sq',  url:'', size:'2.9MB' },
+  ],
+  'fb-story':   [
+    { name:'Multiply Story',   ratio:'vrt', url:'', size:'4.0MB' },
+    { name:'Invite – Church',  ratio:'vrt', url:'', size:'3.7MB' },
+  ],
+  'vid-land':   [
+    { name:'Promo – Full',     ratio:'lnd', url:'', size:'34MB'  },
+    { name:'Sunday Highlight', ratio:'lnd', url:'', size:'28MB'  },
+  ],
+  'vid-vert':   [
+    { name:'Reel – 60s',       ratio:'vrt', url:'', size:'24MB'  },
+    { name:'Reel – 30s',       ratio:'vrt', url:'', size:'16MB'  },
+  ],
+  'vid-sq':     [
+    { name:'Square Cut',       ratio:'sq',  url:'', size:'18MB'  },
+  ],
+  // ── DIGITAL DISCIPLE — one per platform ──
+  'dd-ig-post':  [{ name:'Multiply – Global',  ratio:'sq',  url:'', size:'2.9MB' }],
+  'dd-ig-story': [{ name:'Multiply Story',     ratio:'vrt', url:'', size:'4.0MB' }],
+  'dd-tiktok':   [{ name:'Multiply – TT',      ratio:'vrt', url:'', size:'4.1MB' }],
+  'dd-facebook': [{ name:'Multiply – FB',      ratio:'sq',  url:'', size:'3.1MB' }],
+  'dd-video':    [
+    { name:'Campaign Reel',    ratio:'vrt', url:'', size:'22MB'  },
+    { name:'Short Cut – 30s',  ratio:'vrt', url:'', size:'14MB'  },
+  ],
+};
+
+const CAPTIONS = {
+  instagram: [
+    "Church changed my life. If you dey find somewhere to belong — come check out 2819 Church. We dey live every Sunday on YouTube. Share this with someone in your network. E don rise! #Multiply2819 #2819Church #NigeriaForChrist",
+    "One invite fit change somebody life. Bring someone this Sunday. Whether you dey Lagos or Atlanta — the message of Multiply reaches you. Link in bio. #Multiply2819 #Nigeria #HesRisen",
+    "You no need to figure life out alone. Come as you are. 2819 Church dey live every Sunday — stream with us. Tag somebody who needs this word. #Multiply2819 #AjindeOluwa #NigeriaForChrist",
+  ],
+  tiktok: [
+    "If you never set foot for church before — this is your sign. 2819 Church dey live every Sunday. Come find out what God is doing. Tag somebody who needs to see this. #Multiply2819 #ChurchTok #NigeriaForChrist",
+    "The best decision I made was saying yes to church. No regrets. Stream with us this Sunday — 2819 Church on YouTube. #Multiply2819 #2819Church #ChurchTok",
+    "Church no be wetin you think. Come see for yourself. 2819 Church — streaming live every Sunday. Drop a comment if you want the link. #Multiply2819 #AjindeOluwa",
+  ],
+  facebook: [
+    "To my Nigerian family — the message of Multiply is for you too. Share this with your community. Stream 2819 Church live every Sunday at youtube.com/@2819Church. Until all have heard. #Multiply2819 #Nigeria",
+    "One of the best things I ever did was invite someone to encounter God. Your turn. Share this post and let someone in your network know — they are welcome. #Multiply2819 #2819Church #NigeriaForChrist",
+    "Whether you grew up in church or you dey carry doubt — you are welcome here. 2819 Church. Streaming live every Sunday. #Multiply2819 #AjindeOluwa",
+  ],
+  digital: [
+    "I am part of the 2819 Digital Family from Nigeria and the presence of God in this ministry is real. You no need to be in Atlanta to belong. Stream live every Sunday at youtube.com/@2819Church and share this with somebody in your city. Until all have heard. #Multiply2819 #DigitalDisciple #NigeriaForChrist",
+    "The glory of God no get border. Share this with your community in Lagos, Abuja, Enugu, everywhere. The Multiply message belongs to every believer, every city, every nation. Matthew 28:19. #Multiply2819 #HesRisen #UntilAllHaveHeard",
+    "Ojo Ajinde (Resurrection Sunday) no be just Atlanta event. Na declaration for the whole world. Post this. Tag somebody. Invite them to stream with you this Sunday. The digital family is real and Nigeria is in it. #Multiply2819 #AjindeOluwa #2819Church",
+  ],
+};
+
+// ─── SOCIAL HANDLES ──────────────────────────────────────
+// All handles shown on every platform tab; subset highlighted per context.
+const ICONS = {
+  ig: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="white"/></svg>`,
+  tt: `<svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.54V6.79a4.85 4.85 0 01-1.07-.1z"/></svg>`,
+  fb: `<svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`,
+  yt: `<svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`,
+  x:  `<svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`,
+};
+
+const ALL_HANDLES = [
+  { platform:'Instagram',  icon:'ig', handle:'@2819church', url:'https://instagram.com/2819church' },
+  { platform:'TikTok',     icon:'tt', handle:'@2819.church', url:'https://tiktok.com/@2819.church' },
+  { platform:'Facebook',   icon:'fb', handle:'@2819church', url:'https://facebook.com/2819church' },
+  { platform:'YouTube',    icon:'yt', handle:'@2819church', url:'https://youtube.com/@2819church' },
+  { platform:'X (Twitter)',icon:'x',  handle:'@2819church', url:'https://x.com/2819church' },
+];
+
+// Each tab shows all handles so people can cross-post
+const HANDLES_PER_TAB = {
+  instagram: ALL_HANDLES,
+  tiktok:    ALL_HANDLES,
+  facebook:  ALL_HANDLES,
+  video:     ALL_HANDLES,
+  digital:   ALL_HANDLES,
+};
+
+// ─── GRID BUILDER ────────────────────────────────────────
+function buildGrid(id) {
+  const assets = ASSETS[id] || [];
+  const el = document.getElementById('grid-' + id);
+  if (!el) return;
+  el.innerHTML = assets.map((a, i) => {
+    const has = a.url && a.url.trim() !== '';
+    const btn = has
+      ? `<a class="dl-btn" href="${a.url}" download="${a.name}" onclick="onDownload(this)">
+           <svg viewBox="0 0 24 24"><path d="M12 3v13M5 16l7 7 7-7"/><path d="M3 21h18"/></svg>
+           Download
+         </a>`
+      : `<button class="dl-btn" onclick="onDownload(this)">
+           <svg viewBox="0 0 24 24"><path d="M12 3v13M5 16l7 7 7-7"/><path d="M3 21h18"/></svg>
+           Download
+         </button>`;
+
+    const thumb = has
+      ? `<img src="${a.url}" alt="${a.name}" loading="lazy">`
+      : `<div class="thumb-ph"><span class="thumb-ph-label">${a.name}</span></div>`;
+
+    return `
+      <div class="asset-card" style="animation:fadeUp 0.35s ease ${i*0.06}s both">
+        <div class="thumb ${a.ratio}">
+          ${thumb}
+          <span class="thumb-tag">Multiply</span>
+        </div>
+        <div class="card-foot">
+          <div>
+            <div class="card-name">${a.name}</div>
+            <div class="card-size">${a.size}</div>
+          </div>
+          ${btn}
+        </div>
+      </div>`;
+  }).join('');
+}
+
+// ─── CAPTION BUILDER ─────────────────────────────────────
+function buildCaptions(platform) {
+  const el = document.getElementById('caps-' + platform);
+  if (!el || !CAPTIONS[platform]) return;
+  el.innerHTML = CAPTIONS[platform].map((text, i) => `
+    <div class="caption-card" style="animation:fadeUp 0.35s ease ${i*0.07}s both">
+      <p class="caption-text">${text}</p>
+      <button class="copy-btn" onclick="copyCap(this,'${platform}',${i})">Copy</button>
+    </div>`).join('');
+}
+
+// ─── HANDLE BUILDER ──────────────────────────────────────
+function buildHandles(tab) {
+  const handles = HANDLES_PER_TAB[tab] || ALL_HANDLES;
+  const el = document.getElementById('handles-' + tab);
+  if (!el) return;
+  el.innerHTML = handles.map((h, i) => `
+    <div class="handle-row" style="animation:slideInRight 0.3s ease ${i*0.06}s both">
+      <div class="handle-platform">
+        <div class="handle-icon ${h.icon}">${ICONS[h.icon]}</div>
+        <div class="handle-info">
+          <strong>${h.handle}</strong>
+          <span>${h.platform}</span>
+        </div>
+      </div>
+      <button class="handle-copy" onclick="copyHandle(this,'${h.handle}','${h.platform}')">Copy</button>
+    </div>`).join('');
+}
+
+// ─── TAB SWITCH ──────────────────────────────────────────
+function switchTab(platform, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById('panel-' + platform);
+  panel.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─── DOWNLOAD FEEDBACK ───────────────────────────────────
+function onDownload(btn) {
+  const assetName = btn.closest('.asset-card')?.querySelector('.card-name')?.textContent || '';
+  const platform  = document.querySelector('.panel.active')?.id?.replace('panel-','') || '';
+  trackEvent('download', platform, assetName);
+  btn.classList.add('fired');
+  const orig = btn.innerHTML;
+  btn.innerHTML = `<svg viewBox="0 0 24 24" style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><path d="M20 6L9 17l-5-5"/></svg> Saved`;
+  setTimeout(() => {
+    btn.classList.remove('fired');
+    btn.innerHTML = orig;
+  }, 2200);
+  showToast('Downloading — check your camera roll.');
+}
+
+// ─── COPY HELPERS ─────────────────────────────────────────
+function copyCap(btn, platform, idx) {
+  trackEvent('caption_copy', platform);
+  navigator.clipboard.writeText(CAPTIONS[platform][idx]).then(() => {
+    btn.textContent = 'Copied';
+    btn.classList.add('done');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('done'); }, 2200);
+    showToast('Caption copied.');
+  });
+}
+function copyText(txt) {
+  navigator.clipboard.writeText(txt).then(() => showToast(txt + ' copied.'));
+}
+function copyHandle(btn, handle, platform) {
+  trackEvent('handle_copy', platform, handle);
+  navigator.clipboard.writeText(handle).then(() => {
+    btn.textContent = 'Copied';
+    btn.classList.add('done');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('done'); }, 2200);
+    showToast(handle + ' copied — ' + platform);
+  });
+}
+
+// ─── TOAST ────────────────────────────────────────────────
+let _tt;
+function showToast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(_tt);
+  _tt = setTimeout(() => el.classList.remove('show'), 2600);
+}
+
+// ─── INIT ─────────────────────────────────────────────────
+['ig-post','ig-story','tt-graphic','tt-video',
+ 'fb-post','fb-story','vid-land','vid-vert','vid-sq',
+ 'dd-ig-post','dd-ig-story','dd-tiktok','dd-facebook','dd-video'].forEach(buildGrid);
+['instagram','tiktok','facebook','digital'].forEach(buildCaptions);
+['instagram','tiktok','facebook','video','digital'].forEach(buildHandles);
+</script>
+</body>
+</html>

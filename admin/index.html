@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multiply Analytics · 2819 Admin</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<style>
+/* ─── TOKENS ──────────────────────────────────────────── */
+:root {
+  --red:    #D81F1A;
+  --black:  #0A0A0A;
+  --bg:     #0D0D0D;
+  --card:   #161616;
+  --border: #262626;
+  --muted:  #666;
+  --text:   #E8E8E6;
+  --ff:     'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --en: #E8E8E6; --es: #F5A623; --fr: #4A90D9; --ng: #27AE60;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:var(--ff);font-size:14px;line-height:1.5;min-height:100vh;-webkit-font-smoothing:antialiased}
+
+/* ─── LAYOUT ─────────────────────────────────────────── */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 24px;border-bottom:1px solid var(--border);
+  position:sticky;top:0;background:var(--bg);z-index:10;
+}
+.topbar-logo{font-size:15px;font-weight:800;letter-spacing:-0.02em}
+.topbar-logo em{color:var(--red);font-style:normal}
+.topbar-meta{font-size:12px;color:var(--muted)}
+.topbar-refresh{
+  background:var(--card);border:1px solid var(--border);color:var(--text);
+  padding:6px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;
+  transition:border-color 0.15s;
+}
+.topbar-refresh:hover{border-color:var(--red)}
+
+.main{max-width:1100px;margin:0 auto;padding:28px 20px 60px}
+.section-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+
+/* ─── GATE ────────────────────────────────────────────── */
+#gate{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:16px;
+}
+.gate-logo{font-size:22px;font-weight:800}
+.gate-logo em{color:var(--red);font-style:normal}
+.gate-input{
+  background:var(--card);border:1px solid var(--border);color:var(--text);
+  padding:12px 16px;border-radius:8px;font-size:15px;font-family:var(--ff);
+  width:260px;outline:none;
+}
+.gate-input:focus{border-color:var(--red)}
+.gate-btn{
+  background:var(--red);color:#fff;border:none;padding:12px 28px;
+  border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;
+  font-family:var(--ff);letter-spacing:0.02em;
+}
+.gate-err{color:var(--red);font-size:13px;display:none}
+
+/* ─── DASHBOARD (hidden until auth) ──────────────────── */
+#dashboard{display:none}
+
+/* ─── STAT CARDS ─────────────────────────────────────── */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}
+@media(max-width:640px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+.stat-card{
+  background:var(--card);border:1px solid var(--border);border-radius:10px;
+  padding:18px 16px;
+}
+.stat-val{font-size:28px;font-weight:800;letter-spacing:-0.03em;line-height:1}
+.stat-lbl{font-size:11px;color:var(--muted);margin-top:5px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em}
+.stat-delta{font-size:11px;color:var(--muted);margin-top:3px}
+
+/* ─── REGION CARDS ───────────────────────────────────── */
+.region-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:32px}
+@media(max-width:600px){.region-grid{grid-template-columns:1fr}}
+.region-card{
+  background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px;
+}
+.region-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.region-dot{width:10px;height:10px;border-radius:50%}
+.region-name{font-size:14px;font-weight:700}
+.region-flag{font-size:18px}
+.region-total{font-size:26px;font-weight:800;letter-spacing:-0.03em;margin-bottom:6px}
+.region-sub{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px}
+.region-bars{}
+.rbar-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.rbar-lbl{font-size:11px;color:var(--muted);width:90px;flex-shrink:0}
+.rbar-track{flex:1;background:var(--border);border-radius:100px;height:6px;overflow:hidden}
+.rbar-fill{height:6px;border-radius:100px;transition:width 0.8s ease}
+.rbar-val{font-size:11px;color:var(--muted);width:28px;text-align:right;flex-shrink:0}
+
+/* ─── PLATFORM TABLE ─────────────────────────────────── */
+.table-wrap{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:32px}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:12px 16px;border-bottom:1px solid var(--border)}
+td{padding:11px 16px;font-size:13px;border-bottom:1px solid var(--border)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,0.02)}
+.badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:100px;letter-spacing:0.05em;text-transform:uppercase}
+.badge-en{background:rgba(232,232,230,0.12);color:#E8E8E6}
+.badge-es{background:rgba(245,166,35,0.15);color:#F5A623}
+.badge-fr{background:rgba(74,144,217,0.15);color:#4A90D9}
+.badge-ng{background:rgba(39,174,96,0.15);color:#27AE60}
+
+/* ─── ACTIVITY FEED ──────────────────────────────────── */
+.feed-wrap{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:32px}
+.feed-item{display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--border)}
+.feed-item:last-child{border-bottom:none}
+.feed-action{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);width:100px;flex-shrink:0}
+.feed-detail{flex:1;font-size:13px}
+.feed-time{font-size:11px;color:var(--muted);flex-shrink:0}
+.feed-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+/* ─── LOADING ─────────────────────────────────────────── */
+.loader{text-align:center;padding:48px;color:var(--muted);font-size:13px}
+.spinner{display:inline-block;width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin 0.7s linear infinite;margin-right:8px;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ─── MISSION INTEL BOX ──────────────────────────────── */
+.intel-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:32px}
+.intel-title{font-size:13px;font-weight:700;margin-bottom:8px}
+.intel-text{font-size:13px;color:var(--muted);line-height:1.6}
+.intel-highlight{color:var(--text)}
+</style>
+</head>
+<body>
+
+<!-- ─── AUTH GATE ──────────────────────────────────────────── -->
+<div id="gate">
+  <div class="gate-logo">2819. <em>Admin</em></div>
+  <p style="color:var(--muted);font-size:13px">Multiply Campaign Analytics</p>
+  <input id="pw-input" class="gate-input" type="password" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')checkPw()">
+  <button class="gate-btn" onclick="checkPw()">Enter</button>
+  <p class="gate-err" id="gate-err">Incorrect password.</p>
+</div>
+
+<!-- ─── DASHBOARD ─────────────────────────────────────────── -->
+<div id="dashboard">
+  <div class="topbar">
+    <div class="topbar-logo">Mult<em>iply</em> Analytics <span style="color:var(--muted);font-weight:400;font-size:13px;margin-left:8px">2819 Church</span></div>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="topbar-meta" id="last-refresh">—</div>
+      <button class="topbar-refresh" onclick="loadAll()">↻ Refresh</button>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <!-- OVERVIEW STATS -->
+    <div class="section-label">Campaign Overview</div>
+    <div class="stat-grid" id="stat-grid">
+      <div class="stat-card"><div class="stat-val" id="s-total">—</div><div class="stat-lbl">Total Events</div></div>
+      <div class="stat-card"><div class="stat-val" id="s-downloads">—</div><div class="stat-lbl">Downloads</div></div>
+      <div class="stat-card"><div class="stat-val" id="s-copies">—</div><div class="stat-lbl">Caption Copies</div></div>
+      <div class="stat-card"><div class="stat-val" id="s-regions">—</div><div class="stat-lbl">Active Regions</div></div>
+    </div>
+
+    <!-- MISSION INTEL -->
+    <div class="section-label">Mission Intelligence</div>
+    <div class="intel-box" id="intel-box">
+      <div class="intel-title">📡 Where is the message multiplying?</div>
+      <div class="intel-text" id="intel-text">Loading data...</div>
+    </div>
+
+    <!-- REGION BREAKDOWN -->
+    <div class="section-label">Regional Breakdown</div>
+    <div class="region-grid" id="region-grid">
+      <div class="loader"><span class="spinner"></span>Loading...</div>
+    </div>
+
+    <!-- PLATFORM TABLE -->
+    <div class="section-label">Platform Activity by Region</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Region</th><th>Platform</th><th>Events</th><th>% of Region</th></tr></thead>
+        <tbody id="platform-tbody"><tr><td colspan="4"><div class="loader"><span class="spinner"></span>Loading...</div></td></tr></tbody>
+      </table>
+    </div>
+
+    <!-- TOP ASSETS -->
+    <div class="section-label">Top Downloaded Assets</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Asset</th><th>Region</th><th>Downloads</th></tr></thead>
+        <tbody id="assets-tbody"><tr><td colspan="3"><div class="loader"><span class="spinner"></span>Loading...</div></td></tr></tbody>
+      </table>
+    </div>
+
+    <!-- LIVE FEED -->
+    <div class="section-label">Live Activity Feed (last 50)</div>
+    <div class="feed-wrap" id="feed-wrap">
+      <div class="loader"><span class="spinner"></span>Loading...</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ─── CONFIG — replace with real values ────────────────────────────────────────
+const SB_URL  = 'https://qtutkgyklxgcdmmivipp.supabase.co';
+const SB_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0dXRrZ3lrbHhnY2RtbWl2aXBwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4Mzc2NTAsImV4cCI6MjA4ODQxMzY1MH0.eV8mUOR7OboOuOeDsJDQXXBJD2c4LVRwRdagwuZtBqA';
+const ADMIN_PW = 'Untilallhaveheard!'; // Set a strong password here
+
+// ─── AUTH GATE ────────────────────────────────────────────────────────────────
+function checkPw() {
+  const val = document.getElementById('pw-input').value;
+  if (val === ADMIN_PW) {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    loadAll();
+  } else {
+    document.getElementById('gate-err').style.display = 'block';
+  }
+}
+
+// ─── SUPABASE CLIENT ──────────────────────────────────────────────────────────
+const { createClient } = supabase;
+const db = createClient(SB_URL, SB_KEY);
+
+// ─── REGION META ──────────────────────────────────────────────────────────────
+const REGION_META = {
+  en: { label: 'English (US)',  flag: '🇺🇸', color: '#E8E8E6' },
+  es: { label: 'Español',       flag: '🌎', color: '#F5A623' },
+  fr: { label: 'Français',      flag: '🇫🇷', color: '#4A90D9' },
+  ng: { label: 'Nigeria',       flag: '🇳🇬', color: '#27AE60' },
+};
+
+// ─── LOAD ALL DATA ────────────────────────────────────────────────────────────
+async function loadAll() {
+  document.getElementById('last-refresh').textContent = 'Refreshing...';
+  await Promise.all([loadSummary(), loadPlatforms(), loadTopAssets(), loadFeed()]);
+  document.getElementById('last-refresh').textContent =
+    'Last refresh: ' + new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+}
+
+// ─── OVERVIEW + REGION SUMMARY ────────────────────────────────────────────────
+async function loadSummary() {
+  const { data, error } = await db.from('share_events').select('region, action, created_at');
+  if (error || !data) return;
+
+  const total     = data.length;
+  const downloads = data.filter(r => r.action === 'download').length;
+  const copies    = data.filter(r => r.action === 'caption_copy').length;
+
+  // Region counts
+  const regionCounts = {};
+  data.forEach(r => {
+    if (!regionCounts[r.region]) regionCounts[r.region] = { total:0, downloads:0, copies:0, handle_copies:0 };
+    regionCounts[r.region].total++;
+    if (r.action === 'download')      regionCounts[r.region].downloads++;
+    if (r.action === 'caption_copy')  regionCounts[r.region].copies++;
+    if (r.action === 'handle_copy')   regionCounts[r.region].handle_copies++;
+  });
+
+  const activeRegions = Object.keys(regionCounts).length;
+
+  // Overview stats
+  document.getElementById('s-total').textContent     = total.toLocaleString();
+  document.getElementById('s-downloads').textContent = downloads.toLocaleString();
+  document.getElementById('s-copies').textContent    = copies.toLocaleString();
+  document.getElementById('s-regions').textContent   = activeRegions;
+
+  // Mission intel
+  if (total > 0) {
+    const topRegion = Object.entries(regionCounts).sort((a,b) => b[1].total - a[1].total)[0];
+    const topKey = topRegion[0];
+    const topMeta = REGION_META[topKey] || { label: topKey, flag: '🌍' };
+    const topPct = Math.round((topRegion[1].total / total) * 100);
+    document.getElementById('intel-text').innerHTML =
+      `<span class="intel-highlight">${topMeta.flag} ${topMeta.label}</span> is your most active sharing region — 
+       <span class="intel-highlight">${topPct}% of all events</span> (${topRegion[1].total.toLocaleString()} total). 
+       ${topRegion[1].downloads} downloads, ${topRegion[1].copies} caption copies. 
+       ${topKey === 'ng' ? '🎯 Nigeria activity signals strong crusade interest — worth a targeted follow-up.' : ''}
+       ${topKey === 'es' ? '🎯 Spanish-speaking engagement is leading — consider a Spanish-language livestream or event.' : ''}
+       ${topKey === 'fr' ? '🎯 French-speaking regions are active — flag for potential francophone partnership.' : ''}
+       ${activeRegions < 2 ? ' More regions will activate as the campaign spreads.' : ''}`;
+  } else {
+    document.getElementById('intel-text').textContent = 'No events yet. Campaign tracking is live — data will appear when people start sharing.';
+  }
+
+  // Region cards
+  const maxVal = Math.max(...Object.values(regionCounts).map(r => r.total), 1);
+  const grid = document.getElementById('region-grid');
+  grid.innerHTML = '';
+
+  const orderedRegions = ['en','es','fr','ng'];
+  for (const key of orderedRegions) {
+    const meta  = REGION_META[key] || { label: key, flag: '🌍', color: '#666' };
+    const count = regionCounts[key] || { total:0, downloads:0, copies:0, handle_copies:0 };
+    const pct   = c => count.total > 0 ? Math.round((c / count.total) * 100) : 0;
+    const barW  = c => Math.round((c / maxVal) * 100);
+
+    grid.innerHTML += `
+      <div class="region-card">
+        <div class="region-header">
+          <div class="region-dot" style="background:${meta.color}"></div>
+          <div class="region-flag">${meta.flag}</div>
+          <div class="region-name">${meta.label}</div>
+        </div>
+        <div class="region-total">${count.total.toLocaleString()}</div>
+        <div class="region-sub">Total Events</div>
+        <div class="region-bars">
+          <div class="rbar-row">
+            <div class="rbar-lbl">Downloads</div>
+            <div class="rbar-track"><div class="rbar-fill" style="width:${barW(count.downloads)}%;background:${meta.color}"></div></div>
+            <div class="rbar-val">${count.downloads}</div>
+          </div>
+          <div class="rbar-row">
+            <div class="rbar-lbl">Captions</div>
+            <div class="rbar-track"><div class="rbar-fill" style="width:${barW(count.copies)}%;background:${meta.color}"></div></div>
+            <div class="rbar-val">${count.copies}</div>
+          </div>
+          <div class="rbar-row">
+            <div class="rbar-lbl">Handle Copies</div>
+            <div class="rbar-track"><div class="rbar-fill" style="width:${barW(count.handle_copies)}%;background:${meta.color}"></div></div>
+            <div class="rbar-val">${count.handle_copies}</div>
+          </div>
+        </div>
+      </div>`;
+  }
+}
+
+// ─── PLATFORM TABLE ────────────────────────────────────────────────────────────
+async function loadPlatforms() {
+  const { data, error } = await db.from('share_events').select('region, platform').not('platform', 'is', null);
+  if (error || !data) return;
+
+  // Aggregate
+  const map = {};
+  data.forEach(r => {
+    const k = `${r.region}|${r.platform}`;
+    map[k] = (map[k] || 0) + 1;
+  });
+
+  const regionTotals = {};
+  data.forEach(r => { regionTotals[r.region] = (regionTotals[r.region] || 0) + 1; });
+
+  const rows = Object.entries(map)
+    .map(([k, v]) => { const [region, platform] = k.split('|'); return { region, platform, events: v }; })
+    .sort((a,b) => b.events - a.events);
+
+  const tbody = document.getElementById('platform-tbody');
+  if (!rows.length) {
+    tbody.innerHTML = '<tr><td colspan="4" style="color:var(--muted);text-align:center;padding:24px">No data yet</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = rows.map(r => {
+    const meta = REGION_META[r.region] || { flag: '🌍' };
+    const pct  = regionTotals[r.region] ? Math.round((r.events / regionTotals[r.region]) * 100) : 0;
+    return `<tr>
+      <td><span class="badge badge-${r.region}">${meta.flag} ${r.region.toUpperCase()}</span></td>
+      <td style="text-transform:capitalize">${r.platform}</td>
+      <td style="font-weight:700">${r.events}</td>
+      <td>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="flex:1;background:var(--border);border-radius:100px;height:4px;overflow:hidden">
+            <div style="width:${pct}%;height:4px;background:var(--red);border-radius:100px"></div>
+          </div>
+          <span style="color:var(--muted);font-size:11px;width:28px">${pct}%</span>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+// ─── TOP ASSETS ────────────────────────────────────────────────────────────────
+async function loadTopAssets() {
+  const { data, error } = await db
+    .from('share_events')
+    .select('asset_name, region')
+    .eq('action', 'download')
+    .neq('asset_name', '');
+  if (error || !data) return;
+
+  const map = {};
+  data.forEach(r => {
+    const k = `${r.asset_name}|${r.region}`;
+    map[k] = (map[k] || 0) + 1;
+  });
+
+  const rows = Object.entries(map)
+    .map(([k, v]) => { const [asset_name, region] = k.split('|'); return { asset_name, region, downloads: v }; })
+    .sort((a,b) => b.downloads - a.downloads)
+    .slice(0, 15);
+
+  const tbody = document.getElementById('assets-tbody');
+  if (!rows.length) {
+    tbody.innerHTML = '<tr><td colspan="3" style="color:var(--muted);text-align:center;padding:24px">No downloads tracked yet</td></tr>';
+    return;
+  }
+  tbody.innerHTML = rows.map(r => {
+    const meta = REGION_META[r.region] || { flag: '🌍' };
+    return `<tr>
+      <td style="font-weight:600">${r.asset_name}</td>
+      <td><span class="badge badge-${r.region}">${meta.flag} ${r.region.toUpperCase()}</span></td>
+      <td style="font-weight:700">${r.downloads}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ─── LIVE FEED ────────────────────────────────────────────────────────────────
+async function loadFeed() {
+  const { data, error } = await db
+    .from('share_events')
+    .select('*')
+    .order('created_at', { ascending: false })
+    .limit(50);
+  if (error || !data) return;
+
+  const wrap = document.getElementById('feed-wrap');
+  if (!data.length) {
+    wrap.innerHTML = '<div class="loader" style="color:var(--muted)">No events yet — share the page to start tracking</div>';
+    return;
+  }
+
+  wrap.innerHTML = data.map(r => {
+    const meta  = REGION_META[r.region] || { flag: '🌍', color: '#666' };
+    const label = r.action === 'download' ? '⬇ Download' : r.action === 'caption_copy' ? '📋 Caption' : '🔗 Handle';
+    const detail= `${r.asset_name ? r.asset_name + ' · ' : ''}${r.platform || ''} ${meta.flag}`;
+    const ts    = new Date(r.created_at).toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit' });
+    return `<div class="feed-item">
+      <div class="feed-dot" style="background:${meta.color}"></div>
+      <div class="feed-action">${label}</div>
+      <div class="feed-detail">${detail}</div>
+      <div class="feed-time">${ts}</div>
+    </div>`;
+  }).join('');
+}
+
+// ─── AUTO-REFRESH every 60 seconds ────────────────────────────────────────────
+setInterval(() => {
+  if (document.getElementById('dashboard').style.display !== 'none') loadAll();
+}, 60000);
+</script>
+</body>
+</html>
