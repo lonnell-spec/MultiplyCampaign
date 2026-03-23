@@ -181,7 +181,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   max-width: var(--max); margin: 0 auto;
   background: var(--cream);
   border-bottom: 1px solid var(--border);
-  position: sticky; top: 52px; z-index: 40;
+  position: sticky; top: 52px; z-index: 40; /* top overridden by JS */
   animation: fadeIn 0.4s ease 0.5s both;
 }
 .tabs {
@@ -238,6 +238,14 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   letter-spacing: 0.06em;
   color: var(--muted);
   opacity: 0.65;
+}
+
+/* ─── TABLET ────────────────────────────────────────── */
+@media (min-width: 481px) and (max-width: 768px) {
+  :root { --max: 800px; }
+  .asset-grid { grid-template-columns: repeat(3, 1fr); }
+  .hero { padding: 36px 24px 32px; }
+  .content { padding: 24px 24px 56px; }
 }
 
 /* Add responsive mobile padding */
@@ -349,6 +357,13 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .dl-btn.fired {
   background: #2e7d32;
   animation: pulse 0.3s ease;
+}
+.dl-btn-soon {
+  background: #B0ADA8;
+  cursor: default;
+  pointer-events: none;
+  font-size: 10px;
+  letter-spacing: 0.08em;
 }
 .dl-btn svg {
   width:11px; height:11px;
@@ -535,13 +550,8 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 .lifestyle-block strong { color: var(--red); }
 
 
-.dd-tab { position: relative; }
-.dd-tab::before {
-  content: '🌍';
-  font-size: 10px;
-  margin-right: 4px;
-  vertical-align: middle;
-}
+.dd-tab { position: relative; display: inline-flex; align-items: center; gap: 5px; }
+.dd-tab .dd-globe { width: 13px; height: 13px; flex-shrink: 0; }
 /* Digital Disciple paired rows */
 .dd-row {
   display: grid;
@@ -597,14 +607,16 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   white-space:nowrap; pointer-events:none;
   display:flex; align-items:center; gap:8px;
 }
-.toast::before {
-  content:'✓'; 
+.toast-check {
   background: var(--red);
-  color:#fff; width:18px; height:18px;
+  width:18px; height:18px;
   border-radius:50%; display:flex;
   align-items:center; justify-content:center;
-  font-size:11px; font-weight:800;
   flex-shrink:0;
+}
+.toast-check svg {
+  width:10px; height:10px; stroke:#fff; fill:none;
+  stroke-width:3; stroke-linecap:round; stroke-linejoin:round;
 }
 .toast.show {
   transform:translateX(-50%) translateY(0);
@@ -623,7 +635,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 <!-- HERO -->
 <div class="hero">
   <p class="hero-eyebrow">Resurrection Sunday · Share Campaign</p>
-  <h1 class="hero-title">Mult<em>iply</em><br>the Word.</h1>
+  <h1 class="hero-title">Mult<em>iply</em> the Word.</h1>
   <div class="hero-line"></div>
   <p class="hero-sub">The Gospel spreads person to person. <strong>Download a Multiplier, post it with intention, and invite someone by name.</strong> We all have a platform and a purpose — your feed, your messages, your voice. That is your mission field.</p>
 </div>
@@ -635,7 +647,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     <button class="tab-btn" onclick="switchTab('tiktok',this)">TikTok</button>
     <button class="tab-btn" onclick="switchTab('facebook',this)">Facebook</button>
     <button class="tab-btn" onclick="switchTab('video',this)">Video</button>
-    <button class="tab-btn dd-tab" onclick="switchTab('digital',this)">Digital Disciple</button>
+    <button class="tab-btn dd-tab" onclick="switchTab('digital',this)"><svg class="dd-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>Digital Disciple</button>
   </div>
 </div>
 
@@ -890,7 +902,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   </div>
 </footer>
 
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast"><span class="toast-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span id="toast-msg"></span></div>
 
 <script>
 
@@ -918,35 +930,35 @@ async function trackEvent(action, platform, assetName = '') {
 // Fill url: '' with real CDN/Drive URLs before launch.
 const ASSETS = {
   'ig-post':    [
-    { name:'Multiply 1',       ratio:'sq',  url:'', size:'3.2MB' },
-    { name:'Multiply 2',       ratio:'sq',  url:'', size:'2.9MB' },
-    { name:'Invite – Church',  ratio:'sq',  url:'', size:'2.7MB' },
-    { name:'Invite – Church 2',ratio:'sq',  url:'', size:'3.0MB' },
+    { name:'Multiply 1',       ratio:'sq',  url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-LTXhSfM/0/L5DxzdjWwxLvskDv9rQQKFNsjWgCFJ3D6X2qZzjwf/M/ACCESS%20POST%203-M.jpg', size:'3.2MB' },
+    { name:'Multiply 2',       ratio:'sq',  url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/November-Graphics-25/i-xqDwjM7/0/LtT6Tm3GVQBngsHCx8nngXKtjGgBCSjGsm6HX2CL2/M/ALL%20CHURCH%20ACCESS-M.jpg', size:'2.9MB' },
+    { name:'Invite – Church',  ratio:'sq',  url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/December-Graphics-2025/i-RTdN4DT/0/LQnnj3Z8PJxgKC6FktxqrMzsszpGpGvCkg3PRv9D8/M/1-M.jpg', size:'2.7MB' },
+    { name:'Invite – Church 2',ratio:'sq',  url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/December-Graphics-2025/i-QtHPZDN/0/LBSSXqBn4BGZ2JbxHDcGqWSGcB5rZcDVnKXHxrkVb/M/5-M.jpg', size:'3.0MB' },
   ],
   'ig-story':   [
-    { name:'Multiply Story',   ratio:'vrt', url:'', size:'4.0MB' },
-    { name:'Invite – Church',  ratio:'vrt', url:'', size:'3.8MB' },
-    { name:'Invite Story 2',   ratio:'vrt', url:'', size:'3.6MB' },
+    { name:'Multiply Story',   ratio:'vrt', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-7S6rC3T/0/Nh6Rd7vfmdtr4qqng3Fh53PpcF5nqT256xmrdVBxW/M/ACCESS%20STORY_1-M.jpg', size:'4.0MB' },
+    { name:'Invite – Church',  ratio:'vrt', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-Vmh58cx/0/NCd76PX5H2fHxTc4Ltjdg5NBqhG3s7ssrt3pj72Wj/L/ACCESS%20STORY_4-L.jpg', size:'3.8MB' },
+    { name:'Invite Story 2',   ratio:'vrt', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-K7jR2QL/0/MqMpS3FMb3ZbdmxSCt2pF45GBqnSsgtJFRXSrgvVW/M/ACCESS%20STORY_2-M.jpg', size:'3.6MB' },
   ],
   'tt-graphic': [
-    { name:'Multiply – TT',    ratio:'vrt', url:'', size:'4.1MB' },
-    { name:'Invite – Church',  ratio:'vrt', url:'', size:'3.9MB' },
+    { name:'Multiply – TT',    ratio:'vrt', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-7S6rC3T/0/Nh6Rd7vfmdtr4qqng3Fh53PpcF5nqT256xmrdVBxW/M/ACCESS%20STORY_1-M.jpg', size:'4.1MB' },
+    { name:'Invite – Church',  ratio:'vrt', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-Vmh58cx/0/NCd76PX5H2fHxTc4Ltjdg5NBqhG3s7ssrt3pj72Wj/L/ACCESS%20STORY_4-L.jpg', size:'3.9MB' },
   ],
   'tt-video':   [
     { name:'Campaign Reel',    ratio:'vrt', url:'', size:'22MB'  },
     { name:'Short Cut – 30s',  ratio:'vrt', url:'', size:'14MB'  },
   ],
   'fb-post':    [
-    { name:'Multiply – FB',    ratio:'sq',  url:'', size:'3.1MB' },
-    { name:'Invite – Church',  ratio:'sq',  url:'', size:'2.8MB' },
-    { name:'Invite – Church 2',ratio:'sq',  url:'', size:'2.9MB' },
+    { name:'Multiply – FB',    ratio:'sq',  url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/December-Graphics-2025/i-62NNGK5/0/KKqWHjwPH6P8TMPkNZDnRSJvVqNkPkxWsZwvfPWXb/M/6-M.jpg', size:'3.1MB' },
+    { name:'Invite – Church',  ratio:'sq',  url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/December-Graphics-2025/i-mK52r27/0/KFDSGHrmsF8pN4KnWpL3kPHpLsnRBZw4NC7c2tDbz/L/8-L.jpg', size:'2.8MB' },
+    { name:'Invite – Church 2',ratio:'sq',  url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/November-Graphics-25/i-56g4fXk/0/LsBF33ZpbF3FCsVSM4MqTWwdHHQrBDz6mZh2P3mqs/M/Artboard%201-M.jpg', size:'2.9MB' },
   ],
   'fb-story':   [
-    { name:'Multiply Story',   ratio:'vrt', url:'', size:'4.0MB' },
-    { name:'Invite – Church',  ratio:'vrt', url:'', size:'3.7MB' },
+    { name:'Multiply Story',   ratio:'vrt', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-K7jR2QL/0/MqMpS3FMb3ZbdmxSCt2pF45GBqnSsgtJFRXSrgvVW/M/ACCESS%20STORY_2-M.jpg', size:'4.0MB' },
+    { name:'Invite – Church',  ratio:'vrt', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/November-Graphics-25/i-5Wj7tgk/0/L7hfD7L7tZqHd6vbRjDDPcBFfZsBBC5Cb7cTkTkHF/L/ServeM25_Thanksgiving_1-L.jpg', size:'3.7MB' },
   ],
   'vid-land':   [
-    { name:'Promo – Full',     ratio:'lnd', url:'', size:'34MB'  },
+    { name:'Promo – Full',     ratio:'lnd', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/Sermon-Series/Sermon-Series-1026/i-7cW6gsx/0/MTdvXsL3XHr5MC8tZgdZspHqCV4V6XW8PJFxhFZh2/X3/Sermon-X3.jpg', size:'34MB'  },
     { name:'Sunday Highlight', ratio:'lnd', url:'', size:'28MB'  },
   ],
   'vid-vert':   [
@@ -957,10 +969,10 @@ const ASSETS = {
     { name:'Square Cut',       ratio:'sq',  url:'', size:'18MB'  },
   ],
   // ── DIGITAL DISCIPLE — one per platform ──
-  'dd-ig-post':  [{ name:'Multiply – Global',  ratio:'sq',  url:'', size:'2.9MB' }],
-  'dd-ig-story': [{ name:'Multiply Story',     ratio:'vrt', url:'', size:'4.0MB' }],
-  'dd-tiktok':   [{ name:'Multiply – TT',      ratio:'vrt', url:'', size:'4.1MB' }],
-  'dd-facebook': [{ name:'Multiply – FB',      ratio:'sq',  url:'', size:'3.1MB' }],
+  'dd-ig-post':  [{ name:'Multiply – Global',  ratio:'sq',  url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-LTXhSfM/0/L5DxzdjWwxLvskDv9rQQKFNsjWgCFJ3D6X2qZzjwf/M/ACCESS%20POST%203-M.jpg', size:'2.9MB' }],
+  'dd-ig-story': [{ name:'Multiply Story',     ratio:'vrt', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-7S6rC3T/0/Nh6Rd7vfmdtr4qqng3Fh53PpcF5nqT256xmrdVBxW/M/ACCESS%20STORY_1-M.jpg', size:'4.0MB' }],
+  'dd-tiktok':   [{ name:'Multiply – TT',      ratio:'vrt', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-Vmh58cx/0/NCd76PX5H2fHxTc4Ltjdg5NBqhG3s7ssrt3pj72Wj/L/ACCESS%20STORY_4-L.jpg', size:'4.1MB' }],
+  'dd-facebook': [{ name:'Multiply – FB',      ratio:'sq',  url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/December-Graphics-2025/i-62NNGK5/0/KKqWHjwPH6P8TMPkNZDnRSJvVqNkPkxWsZwvfPWXb/M/6-M.jpg', size:'3.1MB' }],
   'dd-video':    [
     { name:'Campaign Reel',    ratio:'vrt', url:'', size:'22MB'  },
     { name:'Short Cut – 30s',  ratio:'vrt', url:'', size:'14MB'  },
@@ -1018,7 +1030,7 @@ const HANDLES_PER_TAB = {
 };
 
 // ─── GRID BUILDER ────────────────────────────────────────
-function buildGrid(id) {
+function buildGrid(id, skipAnim) {
   const assets = ASSETS[id] || [];
   const el = document.getElementById('grid-' + id);
   if (!el) return;
@@ -1029,17 +1041,16 @@ function buildGrid(id) {
            <svg viewBox="0 0 24 24"><path d="M12 3v13M5 16l7 7 7-7"/><path d="M3 21h18"/></svg>
            Download
          </a>`
-      : `<button class="dl-btn" onclick="onDownload(this)">
-           <svg viewBox="0 0 24 24"><path d="M12 3v13M5 16l7 7 7-7"/><path d="M3 21h18"/></svg>
-           Download
-         </button>`;
+      : `<span class="dl-btn dl-btn-soon">Coming Soon</span>`;
 
     const thumb = has
       ? `<img src="${a.url}" alt="${a.name}" loading="lazy">`
       : `<div class="thumb-ph"><span class="thumb-ph-label">${a.name}</span></div>`;
 
+    const animStyle = skipAnim ? '' : `style="animation:fadeUp 0.35s ease ${i*0.06}s both"`;
+
     return `
-      <div class="asset-card" style="animation:fadeUp 0.35s ease ${i*0.06}s both">
+      <div class="asset-card" ${animStyle}>
         <div class="thumb ${a.ratio}">
           ${thumb}
           <span class="thumb-tag">Multiply</span>
@@ -1085,14 +1096,38 @@ function buildHandles(tab) {
 }
 
 // ─── TAB SWITCH ──────────────────────────────────────────
+const _viewedPanels = new Set(['instagram']); // first tab is viewed on load
 function switchTab(platform, btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   const panel = document.getElementById('panel-' + platform);
   panel.classList.add('active');
+  // Re-build grids without animation if already viewed
+  const skipAnim = _viewedPanels.has(platform);
+  const gridMap = {
+    instagram: ['ig-post','ig-story'],
+    tiktok: ['tt-graphic','tt-video'],
+    facebook: ['fb-post','fb-story'],
+    video: ['vid-land','vid-vert','vid-sq'],
+    digital: ['dd-ig-post','dd-ig-story','dd-tiktok','dd-facebook','dd-video'],
+  };
+  if (skipAnim && gridMap[platform]) {
+    gridMap[platform].forEach(g => buildGrid(g, true));
+  }
+  _viewedPanels.add(platform);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+// ─── STICKY TAB OFFSET ──────────────────────────────────────
+function updateTabOffset() {
+  const nav = document.querySelector('.nav');
+  if (nav) {
+    document.querySelector('.tabs-wrap').style.top = nav.offsetHeight + 'px';
+  }
+}
+window.addEventListener('load', updateTabOffset);
+window.addEventListener('resize', updateTabOffset);
 
 // ─── DOWNLOAD FEEDBACK ───────────────────────────────────
 function onDownload(btn) {
@@ -1109,10 +1144,26 @@ function onDownload(btn) {
   showToast('Downloading — check your camera roll.');
 }
 
+// ─── CLIPBOARD FALLBACK ──────────────────────────────────────
+function copyToClipboard(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(text);
+  }
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textarea);
+  return Promise.resolve();
+}
+
 // ─── COPY HELPERS ─────────────────────────────────────────
 function copyCap(btn, platform, idx) {
   trackEvent('caption_copy', platform);
-  navigator.clipboard.writeText(CAPTIONS[platform][idx]).then(() => {
+  copyToClipboard(CAPTIONS[platform][idx]).then(() => {
     btn.textContent = 'Copied';
     btn.classList.add('done');
     setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('done'); }, 2200);
@@ -1120,11 +1171,11 @@ function copyCap(btn, platform, idx) {
   });
 }
 function copyText(txt) {
-  navigator.clipboard.writeText(txt).then(() => showToast(txt + ' copied.'));
+  copyToClipboard(txt).then(() => showToast(txt + ' copied.'));
 }
 function copyHandle(btn, handle, platform) {
   trackEvent('handle_copy', platform, handle);
-  navigator.clipboard.writeText(handle).then(() => {
+  copyToClipboard(handle).then(() => {
     btn.textContent = 'Copied';
     btn.classList.add('done');
     setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('done'); }, 2200);
@@ -1136,7 +1187,7 @@ function copyHandle(btn, handle, platform) {
 let _tt;
 function showToast(msg) {
   const el = document.getElementById('toast');
-  el.textContent = msg;
+  document.getElementById('toast-msg').textContent = msg;
   el.classList.add('show');
   clearTimeout(_tt);
   _tt = setTimeout(() => el.classList.remove('show'), 2600);

@@ -145,6 +145,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
     <div class="topbar-logo">Mult<em>iply</em> Analytics <span style="color:var(--muted);font-weight:400;font-size:13px;margin-left:8px">2819 Church</span></div>
     <div style="display:flex;align-items:center;gap:12px">
       <div class="topbar-meta" id="last-refresh">—</div>
+      <button class="topbar-refresh" onclick="exportCSV()">⬇ Export CSV</button>
       <button class="topbar-refresh" onclick="loadAll()">↻ Refresh</button>
     </div>
   </div>
@@ -204,12 +205,22 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 // ─── CONFIG — replace with real values ────────────────────────────────────────
 const SB_URL  = 'https://qtutkgyklxgcdmmivipp.supabase.co';
 const SB_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0dXRrZ3lrbHhnY2RtbWl2aXBwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4Mzc2NTAsImV4cCI6MjA4ODQxMzY1MH0.eV8mUOR7OboOuOeDsJDQXXBJD2c4LVRwRdagwuZtBqA';
-const ADMIN_PW = 'Untilallhaveheard!'; // Set a strong password here
+// SHA-256 hash of admin password (hashed server-side, never store plaintext)
+const ADMIN_HASH = 'd20646376b3b258ac95979aea43b2a3ea95ad76f0138faaa687bba7810fa675c';
 
 // ─── AUTH GATE ────────────────────────────────────────────────────────────────
-function checkPw() {
+async function hashPassword(pw) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(pw);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function checkPw() {
   const val = document.getElementById('pw-input').value;
-  if (val === ADMIN_PW) {
+  const inputHash = await hashPassword(val);
+  if (inputHash === ADMIN_HASH) {
     document.getElementById('gate').style.display = 'none';
     document.getElementById('dashboard').style.display = 'block';
     loadAll();
@@ -240,8 +251,12 @@ async function loadAll() {
 
 // ─── OVERVIEW + REGION SUMMARY ────────────────────────────────────────────────
 async function loadSummary() {
-  const { data, error } = await db.from('share_events').select('region, action, created_at');
+  const { data, error } = await db.from('share_events').select('region, action, created_at').limit(10000);
   if (error || !data) return;
+
+  if (data.length >= 10000) {
+    console.warn('Warning: dataset approaching limit (10,000 rows). Results may be incomplete.');
+  }
 
   const total     = data.length;
   const downloads = data.filter(r => r.action === 'download').length;
@@ -327,7 +342,7 @@ async function loadSummary() {
 
 // ─── PLATFORM TABLE ────────────────────────────────────────────────────────────
 async function loadPlatforms() {
-  const { data, error } = await db.from('share_events').select('region, platform').not('platform', 'is', null);
+  const { data, error } = await db.from('share_events').select('region, platform').not('platform', 'is', null).limit(10000);
   if (error || !data) return;
 
   // Aggregate
@@ -431,6 +446,38 @@ async function loadFeed() {
       <div class="feed-time">${ts}</div>
     </div>`;
   }).join('');
+}
+
+// ─── CSV EXPORT ──────────────────────────────────────────────────────────────
+async function exportCSV() {
+  const { data, error } = await db
+    .from('share_events')
+    .select('created_at, region, action, platform, asset_name')
+    .order('created_at', { ascending: false })
+    .limit(10000);
+  if (error || !data || !data.length) {
+    alert('No data to export.');
+    return;
+  }
+  const header = 'timestamp,region,action,platform,asset_name';
+  const rows = data.map(r => {
+    const ts = r.created_at || '';
+    const region = (r.region || '').replace(/,/g, '');
+    const action = (r.action || '').replace(/,/g, '');
+    const platform = (r.platform || '').replace(/,/g, '');
+    const asset = (r.asset_name || '').replace(/,/g, '');
+    return `${ts},${region},${action},${platform},${asset}`;
+  });
+  const csv = header + '\n' + rows.join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'multiply-2819-events-' + new Date().toISOString().slice(0,10) + '.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
 
 // ─── AUTO-REFRESH every 60 seconds ────────────────────────────────────────────
