@@ -930,35 +930,35 @@ async function trackEvent(action, platform, assetName = '') {
 // Fill url: '' with real CDN/Drive URLs before launch.
 const ASSETS = {
   'ig-post':    [
-    { name:'Multiply 1',       ratio:'sq',  url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-LTXhSfM/0/L5DxzdjWwxLvskDv9rQQKFNsjWgCFJ3D6X2qZzjwf/M/ACCESS%20POST%203-M.jpg', size:'3.2MB' },
-    { name:'Multiply 2',       ratio:'sq',  url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/November-Graphics-25/i-xqDwjM7/0/LtT6Tm3GVQBngsHCx8nngXKtjGgBCSjGsm6HX2CL2/M/ALL%20CHURCH%20ACCESS-M.jpg', size:'2.9MB' },
-    { name:'Invite – Church',  ratio:'sq',  url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/December-Graphics-2025/i-RTdN4DT/0/LQnnj3Z8PJxgKC6FktxqrMzsszpGpGvCkg3PRv9D8/M/1-M.jpg', size:'2.7MB' },
-    { name:'Invite – Church 2',ratio:'sq',  url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/December-Graphics-2025/i-QtHPZDN/0/LBSSXqBn4BGZ2JbxHDcGqWSGcB5rZcDVnKXHxrkVb/M/5-M.jpg', size:'3.0MB' },
+    { name:'Multiply 1',       ratio:'sq',  url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/post-1.jpg', size:'3.2MB' },
+    { name:'Multiply 2',       ratio:'sq',  url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/post-2.jpg', size:'2.9MB' },
+    { name:'Invite – Church',  ratio:'sq',  url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/post-3.jpg', size:'2.7MB' },
+    { name:'Invite – Church 2',ratio:'sq',  url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/post-4.jpg', size:'3.0MB' },
   ],
   'ig-story':   [
-    { name:'Multiply Story',   ratio:'vrt', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-7S6rC3T/0/Nh6Rd7vfmdtr4qqng3Fh53PpcF5nqT256xmrdVBxW/M/ACCESS%20STORY_1-M.jpg', size:'4.0MB' },
-    { name:'Invite – Church',  ratio:'vrt', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-Vmh58cx/0/NCd76PX5H2fHxTc4Ltjdg5NBqhG3s7ssrt3pj72Wj/L/ACCESS%20STORY_4-L.jpg', size:'3.8MB' },
-    { name:'Invite Story 2',   ratio:'vrt', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-K7jR2QL/0/MqMpS3FMb3ZbdmxSCt2pF45GBqnSsgtJFRXSrgvVW/M/ACCESS%20STORY_2-M.jpg', size:'3.6MB' },
+    { name:'Multiply Story',   ratio:'vrt', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/story-1.jpg', size:'4.0MB' },
+    { name:'Invite – Church',  ratio:'vrt', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/story-2.jpg', size:'3.8MB' },
+    { name:'Invite Story 2',   ratio:'vrt', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/story-3.jpg', size:'3.6MB' },
   ],
   'tt-graphic': [
-    { name:'Multiply – TT',    ratio:'vrt', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-7S6rC3T/0/Nh6Rd7vfmdtr4qqng3Fh53PpcF5nqT256xmrdVBxW/M/ACCESS%20STORY_1-M.jpg', size:'4.1MB' },
-    { name:'Invite – Church',  ratio:'vrt', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-Vmh58cx/0/NCd76PX5H2fHxTc4Ltjdg5NBqhG3s7ssrt3pj72Wj/L/ACCESS%20STORY_4-L.jpg', size:'3.9MB' },
+    { name:'Multiply – TT',    ratio:'vrt', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/story-1.jpg', size:'4.1MB' },
+    { name:'Invite – Church',  ratio:'vrt', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/story-2.jpg', size:'3.9MB' },
   ],
   'tt-video':   [
     { name:'Campaign Reel',    ratio:'vrt', url:'', size:'22MB'  },
     { name:'Short Cut – 30s',  ratio:'vrt', url:'', size:'14MB'  },
   ],
   'fb-post':    [
-    { name:'Multiply – FB',    ratio:'sq',  url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/December-Graphics-2025/i-62NNGK5/0/KKqWHjwPH6P8TMPkNZDnRSJvVqNkPkxWsZwvfPWXb/M/6-M.jpg', size:'3.1MB' },
-    { name:'Invite – Church',  ratio:'sq',  url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/December-Graphics-2025/i-mK52r27/0/KFDSGHrmsF8pN4KnWpL3kPHpLsnRBZw4NC7c2tDbz/L/8-L.jpg', size:'2.8MB' },
-    { name:'Invite – Church 2',ratio:'sq',  url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/November-Graphics-25/i-56g4fXk/0/LsBF33ZpbF3FCsVSM4MqTWwdHHQrBDz6mZh2P3mqs/M/Artboard%201-M.jpg', size:'2.9MB' },
+    { name:'Multiply – FB',    ratio:'sq',  url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/post-5.jpg', size:'3.1MB' },
+    { name:'Invite – Church',  ratio:'sq',  url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/post-6.jpg', size:'2.8MB' },
+    { name:'Invite – Church 2',ratio:'sq',  url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/post-7.jpg', size:'2.9MB' },
   ],
   'fb-story':   [
-    { name:'Multiply Story',   ratio:'vrt', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-K7jR2QL/0/MqMpS3FMb3ZbdmxSCt2pF45GBqnSsgtJFRXSrgvVW/M/ACCESS%20STORY_2-M.jpg', size:'4.0MB' },
-    { name:'Invite – Church',  ratio:'vrt', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/November-Graphics-25/i-5Wj7tgk/0/L7hfD7L7tZqHd6vbRjDDPcBFfZsBBC5Cb7cTkTkHF/L/ServeM25_Thanksgiving_1-L.jpg', size:'3.7MB' },
+    { name:'Multiply Story',   ratio:'vrt', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/story-3.jpg', size:'4.0MB' },
+    { name:'Invite – Church',  ratio:'vrt', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/story-4.jpg', size:'3.7MB' },
   ],
   'vid-land':   [
-    { name:'Promo – Full',     ratio:'lnd', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/Sermon-Series/Sermon-Series-1026/i-7cW6gsx/0/MTdvXsL3XHr5MC8tZgdZspHqCV4V6XW8PJFxhFZh2/X3/Sermon-X3.jpg', size:'34MB'  },
+    { name:'Promo – Full',     ratio:'lnd', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/landscape-1.jpg', size:'34MB'  },
     { name:'Sunday Highlight', ratio:'lnd', url:'', size:'28MB'  },
   ],
   'vid-vert':   [
@@ -969,10 +969,10 @@ const ASSETS = {
     { name:'Square Cut',       ratio:'sq',  url:'', size:'18MB'  },
   ],
   // ── DIGITAL DISCIPLE — one per platform ──
-  'dd-ig-post':  [{ name:'Multiply – Global',  ratio:'sq',  url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-LTXhSfM/0/L5DxzdjWwxLvskDv9rQQKFNsjWgCFJ3D6X2qZzjwf/M/ACCESS%20POST%203-M.jpg', size:'2.9MB' }],
-  'dd-ig-story': [{ name:'Multiply Story',     ratio:'vrt', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-7S6rC3T/0/Nh6Rd7vfmdtr4qqng3Fh53PpcF5nqT256xmrdVBxW/M/ACCESS%20STORY_1-M.jpg', size:'4.0MB' }],
-  'dd-tiktok':   [{ name:'Multiply – TT',      ratio:'vrt', url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/921/i-Vmh58cx/0/NCd76PX5H2fHxTc4Ltjdg5NBqhG3s7ssrt3pj72Wj/L/ACCESS%20STORY_4-L.jpg', size:'4.1MB' }],
-  'dd-facebook': [{ name:'Multiply – FB',      ratio:'sq',  url:'https://photos.smugmug.com/Finished-Content/GRAPHICS-2025/December-Graphics-2025/i-62NNGK5/0/KKqWHjwPH6P8TMPkNZDnRSJvVqNkPkxWsZwvfPWXb/M/6-M.jpg', size:'3.1MB' }],
+  'dd-ig-post':  [{ name:'Multiply – Global',  ratio:'sq',  url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/post-1.jpg', size:'2.9MB' }],
+  'dd-ig-story': [{ name:'Multiply Story',     ratio:'vrt', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/story-1.jpg', size:'4.0MB' }],
+  'dd-tiktok':   [{ name:'Multiply – TT',      ratio:'vrt', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/story-2.jpg', size:'4.1MB' }],
+  'dd-facebook': [{ name:'Multiply – FB',      ratio:'sq',  url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/post-5.jpg', size:'3.1MB' }],
   'dd-video':    [
     { name:'Campaign Reel',    ratio:'vrt', url:'', size:'22MB'  },
     { name:'Short Cut – 30s',  ratio:'vrt', url:'', size:'14MB'  },
