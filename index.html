@@ -1,9 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+
+<!-- Perplexity Computer Attribution — SEO Meta Tags -->
+<meta name="generator" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#D81F1A">
+<meta name="theme-color" content="#0A0A0A">
 
 <!-- ─── SEO ─────────────────────────────────────────── -->
 <title>Multiply — Share the Message · 2819 Church</title>
@@ -37,29 +53,58 @@
 <meta name="twitter:description" content="Download Resurrection Sunday assets, post with purpose, and invite someone by name. He is risen.">
 <meta name="twitter:image" content="https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/og-image.jpg">
 <meta name="twitter:image:alt" content="Multiply — Resurrection Sunday 2026 · 2819 Church">
+
 <style>
+/* ═══════════════════════════════════════════════════════════════
+   MULTIPLY × 2819 CHURCH — EDITORIAL CAMPAIGN PAGE
+   ═══════════════════════════════════════════════════════════════ */
+
 /* ─── TOKENS ─────────────────────────────────────────── */
 :root {
   --red:     #D81F1A;
   --black:   #0A0A0A;
-  --cream:   #FFFFFF;
-  --bg:      #F5F4F2;
+  --white:   #FFFFFF;
+  --cream:   #F5F4F2;
   --surface: #FFFFFF;
   --border:  #E2E0DC;
   --muted:   #888580;
+  --muted-light: #B0ADA8;
   --ff:      'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --r:       10px;
+  --r:       6px;
   --ease:    0.2s ease;
-  --max:     640px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --max:     720px;
 }
 
 /* ─── RESET ──────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--black);font-family:var(--ff);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{
+  background:var(--cream);
+  color:var(--black);
+  font-family:var(--ff);
+  font-size:15px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
+
+/* ─── GRAIN OVERLAY ──────────────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
 
 /* ─── KEYFRAMES ──────────────────────────────────────── */
 @keyframes fadeUp {
@@ -90,259 +135,497 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   0%   { background-position: -200% center; }
   100% { background-position:  200% center; }
 }
+@keyframes heroReveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+@keyframes crossFloat {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(3deg) scale(1.02); }
+}
+@keyframes countDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 /* ─── NAV ────────────────────────────────────────────── */
 .nav {
   position: sticky; top: 0; z-index: 50;
-  background: var(--cream);
-  border-bottom: 1px solid var(--border);
-  padding: 0 20px;
-  height: 52px;
+  background: var(--black);
+  padding: 0 24px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   animation: fadeIn 0.4s ease both;
 }
 .nav-logo {
-  font-size: 17px; font-weight: 800;
-  letter-spacing: -0.02em; color: var(--black);
-  display: flex; align-items: baseline; gap: 1px;
+  font-size: 14px; font-weight: 800;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--white);
+  display: flex; align-items: baseline; gap: 0;
 }
 .nav-logo .dot { color: var(--red); }
-.nav-logo .church {
-  font-size: 17px; font-weight: 800;
-  letter-spacing: -0.02em; text-transform: uppercase;
-  color: var(--red); margin-left: 2px;
-}
 .nav-right {
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--muted);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted-light);
 }
 
 /* ─── HERO ───────────────────────────────────────────── */
 .hero {
-  background: var(--cream);
-  border-bottom: 1px solid var(--border);
-  padding: 40px 20px 36px;
-  max-width: var(--max);
-  margin: 0 auto;
+  background: var(--black);
   position: relative;
   overflow: hidden;
+  padding: 0;
 }
-/* Decorative X in background */
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 24px 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Giant × background mark */
 .hero::before {
   content: '×';
   position: absolute;
-  right: -10px; top: -20px;
-  font-size: 220px;
+  right: -5%;
+  top: -10%;
+  font-size: min(70vw, 700px);
   font-weight: 900;
+  font-family: var(--ff);
   color: var(--red);
-  opacity: 0.04;
-  line-height: 1;
+  opacity: 0.06;
+  line-height: 0.85;
   pointer-events: none;
   user-select: none;
-  animation: fadeIn 1.2s ease 0.3s both;
+  animation: crossFloat 12s ease-in-out infinite;
 }
 
 .hero-eyebrow {
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--red); margin-bottom: 10px;
-  animation: fadeUp 0.5s ease 0.1s both;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted-light);
+  margin-bottom: 20px;
+  animation: fadeUp 0.5s var(--ease-out) 0.1s both;
 }
+.hero-eyebrow span { color: var(--red); }
+
 .hero-title {
-  font-size: clamp(52px, 14vw, 80px);
-  font-weight: 800; letter-spacing: -0.03em;
-  line-height: 0.97; margin-bottom: 18px;
-  color: var(--black);
-  animation: fadeUp 0.55s ease 0.2s both;
+  font-size: clamp(68px, 18vw, 160px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.88;
+  color: var(--white);
+  margin-bottom: 0;
+  animation: fadeUp 0.6s var(--ease-out) 0.2s both;
 }
-.hero-title em { font-style: normal; color: var(--red); }
+.hero-title em {
+  font-style: normal;
+  color: var(--red);
+}
 
-/* Animated underline under title */
-.hero-line {
-  width: 48px; height: 3px;
+.hero-subtitle {
+  font-size: clamp(28px, 6vw, 48px);
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--white);
+  opacity: 0.5;
+  margin-top: 4px;
+  animation: fadeUp 0.6s var(--ease-out) 0.3s both;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr clamp(180px, 26vw, 340px);
+  gap: 24px;
+  align-items: start;
+}
+.hero-titles {
+  min-width: 0;
+}
+.hero-desc {
+  font-size: clamp(18px, 2.5vw, 24px);
+  color: rgba(255,255,255,0.55);
+  max-width: 600px;
+  line-height: 1.6;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  margin-top: 24px;
+}
+.hero-desc strong {
+  color: var(--white);
+  font-weight: 600;
+}
+.hero-graphic {
+  animation: fadeUp 0.7s var(--ease-out) 0.35s both;
+}
+.hero-graphic img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--r);
+}
+.hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  gap: 40px;
+  padding-bottom: 48px;
+  animation: fadeUp 0.5s var(--ease-out) 0.4s both;
+}
+.hero-meta {
+  text-align: right;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.hero-date {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+.hero-loc {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* ─── VIDEO EXPLAINER ──────────────────────────────────── */
+.video-explainer {
+  background: var(--black);
+  padding: 0 24px 48px;
+}
+.video-explainer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.video-explainer-text {
+  padding: 24px 0;
+}
+.video-explainer-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.video-explainer-label::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 2px;
   background: var(--red);
-  border-radius: 2px;
+}
+.video-explainer-heading {
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--white);
   margin-bottom: 18px;
-  animation: lineGrow 0.6s ease 0.55s both;
+}
+.video-explainer-heading em {
+  font-style: normal;
+  color: var(--red);
+}
+.video-explainer-body {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  max-width: 480px;
+}
+.video-explainer-body strong {
+  color: var(--white);
+  font-weight: 600;
+}
+.video-frame {
+  position: relative;
+  background: #111;
+  border-radius: var(--r);
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.video-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255,255,255,0.3);
+}
+.video-play-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
+}
+.video-play-icon:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 8px rgba(216, 31, 26, 0.15);
+}
+.video-play-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--white);
+  margin-left: 3px;
+}
+.video-placeholder span {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
-.hero-sub {
-  font-size: 14px; color: var(--muted);
-  max-width: 400px; line-height: 1.7;
-  animation: fadeUp 0.5s ease 0.4s both;
+/* ─── SCRIPTURE DIVIDER ──────────────────────────────── */
+.scripture-bar {
+  background: var(--red);
+  padding: 14px 24px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--white);
 }
-.hero-sub strong { color: var(--black); font-weight: 600; }
 
 /* ─── TABS ───────────────────────────────────────────── */
 .tabs-wrap {
-  max-width: var(--max); margin: 0 auto;
-  background: var(--cream);
+  background: var(--white);
   border-bottom: 1px solid var(--border);
-  position: sticky; top: 52px; z-index: 40; /* top overridden by JS */
-  animation: fadeIn 0.4s ease 0.5s both;
+  position: sticky; top: 48px; z-index: 40;
+}
+.tabs-inner {
+  max-width: var(--max);
+  margin: 0 auto;
 }
 .tabs {
   display: flex;
   overflow-x: auto; -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; padding: 0 20px;
+  scrollbar-width: none; padding: 0 24px;
 }
 .tabs::-webkit-scrollbar { display: none; }
 .tab-btn {
   flex-shrink: 0;
-  padding: 14px 16px;
-  font-size: 13px; font-weight: 600;
-  letter-spacing: 0.02em;
+  padding: 16px 20px 14px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--muted);
   border-bottom: 2px solid transparent;
-  transition: color var(--ease), border-color var(--ease), transform 0.15s ease;
+  transition: color 180ms var(--ease-out), border-color 180ms var(--ease-out);
   white-space: nowrap;
   -webkit-tap-highlight-color: transparent;
   position: relative;
 }
-.tab-btn::after {
-  content: '';
-  position: absolute; bottom: -2px; left: 16px; right: 16px;
-  height: 2px; background: var(--red);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.25s ease;
-  border-radius: 2px;
-}
 .tab-btn:hover { color: var(--black); }
-.tab-btn.active { color: var(--black); }
-.tab-btn.active::after { transform: scaleX(1); }
+.tab-btn.active {
+  color: var(--black);
+  border-bottom-color: var(--red);
+}
 
 /* ─── CONTENT ────────────────────────────────────────── */
 .content {
   max-width: var(--max); margin: 0 auto;
-  padding: 28px 20px 64px;
+  padding: 0 24px 0;
 }
 
-.platform-intro { margin-bottom: 24px; }
+/* ─── PLATFORM INTRO ─────────────────────────────────── */
+.platform-intro {
+  padding: 40px 0 32px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 36px;
+}
 .platform-intro h2 {
-  font-size: 20px; font-weight: 700;
-  letter-spacing: -0.02em; margin-bottom: 4px;
+  font-size: 32px; font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 8px;
 }
-.platform-intro p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.platform-intro p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 480px;
+}
 
+/* ─── STEP LABELS ────────────────────────────────────── */
+.step-label {
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--red);
+  margin: 40px 0 20px;
+  display: flex; align-items: center; gap: 12px;
+}
+.step-label::after {
+  content: '';
+  flex: 1; height: 1px;
+  background: var(--border);
+}
+
+/* ─── BLOCK LABELS ───────────────────────────────────── */
 .block-label {
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 12px;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
   display: flex; align-items: center; gap: 8px;
 }
 .block-label .format-tag {
-  font-size: 10px; font-weight: 700;
+  font-size: 9px; font-weight: 700;
   letter-spacing: 0.06em;
   color: var(--muted);
-  opacity: 0.65;
-}
-
-/* ─── TABLET ────────────────────────────────────────── */
-@media (min-width: 481px) and (max-width: 768px) {
-  :root { --max: 800px; }
-  .asset-grid { grid-template-columns: repeat(3, 1fr); }
-  .hero { padding: 36px 24px 32px; }
-  .content { padding: 24px 24px 56px; }
-}
-
-/* Add responsive mobile padding */
-@media (max-width: 480px) {
-  .content { padding: 20px 16px 52px; }
-  .hero { padding: 28px 16px 28px; }
-  .hero-title { font-size: clamp(44px, 13vw, 70px); }
-  .tabs-wrap, .nav { padding: 0 16px; }
-  .tabs { padding: 0 16px; }
-  .share-block { padding: 18px 16px; }
-  .hashtag-block { padding: 16px; }
-  .card-foot { padding: 8px 10px; }
-  .card-name { font-size: 11px; }
-  .dl-btn { padding: 7px 10px; font-size: 10px; min-width: 80px; }
-  .handle-row { padding: 10px 12px; }
-  .handle-info strong { font-size: 13px; }
-  .asset-grid { gap: 8px; }
-  .footer-inner { padding: 0; }
+  opacity: 0.5;
+  background: var(--cream);
+  padding: 2px 6px;
+  border-radius: 3px;
 }
 
 /* ─── ASSET GRID ─────────────────────────────────────── */
 .asset-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px; margin-bottom: 28px;
-}
-.asset-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  overflow: hidden;
-  transition: box-shadow 0.25s ease, transform 0.2s ease;
-}
-.asset-card:hover {
-  box-shadow: 0 0 0 1.5px var(--red);
-  transform: translateY(-2px);
+  gap: 12px;
+  margin-bottom: 32px;
 }
 
-/* Thumbnail */
+.asset-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r);
+  background: var(--black);
+  transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+}
+.asset-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+}
+
+/* Thumbnail — photography-forward */
 .thumb {
   position: relative;
-  background: #EDECEA;
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;
 }
 .thumb.sq  { aspect-ratio: 1/1; }
+.thumb.portrait { aspect-ratio: 4/5; }
 .thumb.vrt { aspect-ratio: 9/16; }
 .thumb.lnd { aspect-ratio: 16/9; }
-.thumb img { width:100%; height:100%; object-fit:cover; }
-.thumb-ph {
-  display: flex; align-items: center; justify-content: center;
-  width:100%; height:100%; padding:12px;
-  background: linear-gradient(135deg, #F0EDEA 0%, #E8E5E2 100%);
+.thumb img {
+  width:100%; height:100%; object-fit:cover;
+  transition: transform 400ms var(--ease-out), filter 400ms var(--ease-out);
 }
-.thumb-ph-label {
-  font-size: 10px; font-weight: 700;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: #C0BAB4; text-align: center; line-height: 1.4;
-}
-.thumb-tag {
-  position: absolute; top:8px; left:8px;
-  background: var(--red); color:#fff;
-  font-size:9px; font-weight:700;
-  letter-spacing:0.08em; text-transform:uppercase;
-  padding:3px 7px; border-radius:4px;
+.asset-card:hover .thumb img {
+  transform: scale(1.04);
 }
 
-/* Card footer */
+/* Coming soon placeholder */
+.thumb-ph {
+  display: flex; align-items: center; justify-content: center;
+  width:100%; height:100%; padding:16px;
+  background: linear-gradient(160deg, #1a1a1a 0%, #111 100%);
+  position: relative;
+}
+.thumb-ph::before {
+  content: '×';
+  position: absolute;
+  font-size: 80px;
+  font-weight: 900;
+  color: var(--white);
+  opacity: 0.03;
+  line-height: 1;
+}
+.thumb-ph-label {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  text-align: center; line-height: 1.5;
+}
+
+/* Tag badge */
+.thumb-tag {
+  position: absolute; top:10px; left:10px;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color:#fff;
+  font-size:8px; font-weight:700;
+  letter-spacing:0.12em; text-transform:uppercase;
+  padding:4px 8px; border-radius:3px;
+}
+
+/* Card footer overlay */
 .card-foot {
-  padding: 10px 12px;
-  display: flex; align-items: center;
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 12px;
+  display: flex; align-items: flex-end;
   justify-content: space-between; gap:8px;
-  border-top: 1px solid var(--border);
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+  opacity: 0;
+  transition: opacity 200ms var(--ease-out);
 }
+.asset-card:hover .card-foot { opacity: 1; }
+
+/* Always show footer on touch devices */
+@media (hover: none) {
+  .card-foot { opacity: 1; }
+}
+
 .card-name {
-  font-size:12px; font-weight:600;
+  font-size:11px; font-weight:600;
   white-space:nowrap; overflow:hidden;
-  text-overflow:ellipsis; color:var(--black);
+  text-overflow:ellipsis; color:var(--white);
 }
-.card-size { font-size:10px; color:var(--muted); margin-top:1px; }
+.card-size { font-size:9px; color:rgba(255,255,255,0.5); margin-top:1px; }
 
 /* ─── DOWNLOAD BUTTON ────────────────────────────────── */
 .dl-btn {
   display: inline-flex; align-items: center;
   justify-content: center; gap: 5px;
   padding: 8px 14px;
-  border-radius: 7px;
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.06em; text-transform: uppercase;
+  border-radius: 4px;
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 0.1em; text-transform: uppercase;
   background: var(--red); color: #fff;
-  flex-shrink: 0; min-width: 90px;
+  flex-shrink: 0;
   position: relative; overflow: hidden;
-  transition: opacity var(--ease), transform 0.15s ease, box-shadow 0.2s ease;
+  transition: opacity 180ms var(--ease-out), transform 150ms ease, background 180ms var(--ease-out);
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
+  border: none;
+  font-family: var(--ff);
 }
-/* Shimmer sweep on hover */
 .dl-btn::before {
   content: '';
   position: absolute; inset: 0;
@@ -352,18 +635,10 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   transition: opacity 0.2s ease;
 }
 .dl-btn:hover::before { opacity: 1; animation: shimmer 0.6s ease; }
-.dl-btn:hover { box-shadow: 0 0 0 2px var(--red); }
 .dl-btn:active { transform: scale(0.93); opacity: 0.85; }
 .dl-btn.fired {
   background: #2e7d32;
   animation: pulse 0.3s ease;
-}
-.dl-btn-soon {
-  background: #B0ADA8;
-  cursor: default;
-  pointer-events: none;
-  font-size: 10px;
-  letter-spacing: 0.08em;
 }
 .dl-btn svg {
   width:11px; height:11px;
@@ -372,92 +647,140 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   flex-shrink:0;
 }
 
+/* ─── EDITORIAL DIVIDER ──────────────────────────────── */
+.editorial-break {
+  margin: 48px -24px;
+  padding: 48px 24px;
+  background: var(--black);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.editorial-break::before {
+  content: '×';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 200px;
+  font-weight: 900;
+  color: var(--white);
+  opacity: 0.03;
+  line-height: 1;
+}
+.editorial-break .pull-quote {
+  font-size: clamp(18px, 4vw, 28px);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  color: var(--white);
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.editorial-break .pull-quote strong {
+  font-weight: 800;
+  color: var(--red);
+}
+.editorial-break .pull-ref {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-top: 16px;
+  display: block;
+}
+
 /* ─── CAPTION BLOCK ──────────────────────────────────── */
-.caption-block { margin-bottom: 28px; }
+.caption-block { margin-bottom: 32px; }
 .caption-list  { display: grid; gap: 10px; }
 .caption-card {
-  background: var(--surface);
+  background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--r);
-  padding: 14px;
-  display: flex; align-items: flex-start; gap: 12px;
-  transition: box-shadow 0.2s ease;
+  padding: 16px;
+  display: flex; align-items: flex-start; gap: 14px;
+  transition: border-color 180ms var(--ease-out);
+  position: relative;
 }
-.caption-card:hover { box-shadow: 0 0 0 1.5px var(--red); }
+.caption-card::before {
+  content: '"';
+  position: absolute;
+  top: 8px; left: 12px;
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--red);
+  opacity: 0.08;
+  line-height: 1;
+  pointer-events: none;
+}
+.caption-card:hover { border-color: var(--red); }
 .caption-text {
   flex:1; font-size:13px;
-  line-height:1.65; color:var(--black);
+  line-height:1.7; color:var(--black);
+  position: relative;
 }
 .copy-btn {
   flex-shrink:0;
-  padding:8px 14px; border-radius:7px;
-  font-size:11px; font-weight:700;
-  letter-spacing:0.06em; text-transform:uppercase;
+  padding:8px 16px; border-radius:4px;
+  font-size:10px; font-weight:700;
+  letter-spacing:0.1em; text-transform:uppercase;
   border:1.5px solid var(--border);
   color:var(--muted); background:transparent;
-  transition:all var(--ease);
+  transition: border-color 180ms var(--ease-out), color 180ms var(--ease-out);
   -webkit-tap-highlight-color:transparent;
+  font-family: var(--ff);
 }
-.copy-btn:hover { border-color: var(--red); color: var(--black); background: transparent; }
+.copy-btn:hover { border-color: var(--red); color: var(--black); }
 .copy-btn.done { border-color:#2e7d32; color:#2e7d32; }
 
 /* ─── SHARE / HANDLES SECTION ────────────────────────── */
 .share-block {
-  background: var(--surface);
+  background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--r);
   padding: 24px;
-  margin-bottom: 28px;
-  position: relative;
-  overflow: hidden;
-}
-.share-block::before {
-  content: '×';
-  position: absolute;
-  right: -8px; bottom: -20px;
-  font-size: 140px; font-weight: 900;
-  color: var(--red); opacity: 0.04;
-  line-height: 1; pointer-events: none; user-select: none;
+  margin-bottom: 32px;
 }
 .share-block .block-label {
   color: var(--muted);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 .share-heading {
-  font-size: 22px; font-weight: 800;
-  letter-spacing: -0.02em;
+  font-size: 20px; font-weight: 900;
+  letter-spacing: -0.03em;
   color: var(--black); margin-bottom: 4px;
 }
 .share-heading em { font-style:normal; color: var(--red); }
 .share-sub {
   font-size: 13px; color: var(--muted);
-  margin-bottom: 20px; line-height: 1.5;
+  margin-bottom: 16px; line-height: 1.6;
 }
 
-.handles-list { display: grid; gap: 8px; }
+.handles-list { display: grid; gap: 6px; }
 .handle-row {
   display: flex; align-items: center;
   justify-content: space-between; gap: 12px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 12px 14px;
-  transition: background 0.18s ease, border-color 0.18s ease;
+  background: var(--cream);
+  border-radius: 4px;
+  padding: 10px 12px;
+  transition: background 180ms var(--ease-out);
 }
 .handle-row:hover {
-  border-color: var(--red);
-  background: var(--bg);
+  background: #EEEBE8;
 }
 .handle-platform {
   display: flex; align-items: center; gap: 10px;
 }
 .handle-icon {
-  width: 36px; height: 36px;
-  border-radius: 9px;
+  width: 32px; height: 32px;
+  border-radius: 6px;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
-.handle-icon svg { width: 18px; height: 18px; }
+.handle-icon svg { width: 15px; height: 15px; }
 .handle-icon.ig  { background: linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045); }
 .handle-icon.tt  { background: #000; }
 .handle-icon.fb  { background: #1877F2; }
@@ -466,28 +789,29 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
 .handle-info strong {
   display: block;
-  font-size: 14px; font-weight: 700;
+  font-size: 13px; font-weight: 700;
   color: var(--black); letter-spacing: -0.01em;
 }
 .handle-info span {
-  font-size: 11px; color: var(--muted);
+  font-size: 10px; color: var(--muted);
   font-weight: 500;
+  letter-spacing: 0.02em;
 }
 .handle-copy {
   flex-shrink: 0;
-  padding: 7px 13px; border-radius: 7px;
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 6px 12px; border-radius: 4px;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
   border: 1.5px solid var(--border);
   color: var(--muted);
   background: transparent;
-  transition: all 0.18s ease;
+  transition: all 180ms var(--ease-out);
   -webkit-tap-highlight-color: transparent;
+  font-family: var(--ff);
 }
 .handle-copy:hover {
   border-color: var(--red);
   color: var(--black);
-  background: transparent;
 }
 .handle-copy.done {
   border-color: #2e7d32; color: #2e7d32;
@@ -495,64 +819,80 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
 /* ─── HASHTAG BLOCK ──────────────────────────────────── */
 .hashtag-block {
-  background: var(--surface);
+  background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--r);
-  padding: 20px; margin-bottom: 4px;
+  padding: 20px 24px;
+  margin-bottom: 4px;
 }
 .hashtag-primary {
-  font-size: 28px; font-weight: 800;
+  font-size: 24px; font-weight: 900;
   letter-spacing: -0.02em; color: var(--red);
-  margin-bottom: 4px; cursor: pointer;
+  margin-bottom: 2px; cursor: pointer;
   display: inline-block;
   -webkit-tap-highlight-color: transparent;
-  transition: opacity 0.15s ease;
+  transition: opacity 150ms ease;
 }
-.hashtag-primary:hover { opacity: 0.75; }
-.hashtag-note { font-size:12px; color:var(--muted); margin-bottom:14px; }
-.hashtag-pills { display:flex; flex-wrap:wrap; gap:8px; }
+.hashtag-primary:hover { opacity: 0.7; }
+.hashtag-note { font-size:11px; color:var(--muted); margin-bottom:12px; }
+.hashtag-pills { display:flex; flex-wrap:wrap; gap:6px; }
 .pill {
-  padding:6px 13px; border:1.5px solid var(--border);
-  border-radius:100px; font-size:12px; font-weight:600;
-  color:var(--black); background:var(--bg); cursor:pointer;
+  padding:5px 12px;
+  border:1.5px solid var(--border);
+  border-radius:100px;
+  font-size:11px; font-weight:600;
+  color:var(--black); background:var(--cream);
+  cursor:pointer;
   -webkit-tap-highlight-color:transparent;
-  transition: border-color 0.15s ease, background 0.15s ease;
+  transition: border-color 150ms ease;
+  font-family: var(--ff);
 }
-.pill:hover { border-color: var(--red); background: var(--bg); }
+.pill:hover { border-color: var(--red); }
 .pill:active { opacity:0.65; }
 
-/* ─── STEP LABELS ────────────────────────────────────── */
-.step-label {
-  font-size: 13px; font-weight: 800;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--red);
-  margin: 32px 0 14px;
-  display: flex; align-items: center; gap: 10px;
-}
-.step-label::after {
-  content: '';
-  flex: 1; height: 1px;
-  background: var(--border);
-}
-
-/* ─── LIFESTYLE BLOCK ────────────────────────────────── */
+/* ─── LIFESTYLE BLOCK — FULL BLEED ───────────────────── */
 .lifestyle-block {
   background: var(--black);
-  border-radius: var(--r);
-  padding: 24px;
-  margin-top: 4px;
-  margin-bottom: 28px;
+  margin: 4px -24px 0;
+  padding: 48px 32px 56px;
+  position: relative;
+  overflow: hidden;
+}
+.lifestyle-block::before {
+  content: '×';
+  position: absolute;
+  right: -20px;
+  bottom: -30px;
+  font-size: 180px;
+  font-weight: 900;
+  color: var(--white);
+  opacity: 0.03;
+  line-height: 1;
+  pointer-events: none;
+}
+.lifestyle-block .lf-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 16px;
 }
 .lifestyle-block p {
-  font-size: 14px; color: #fff;
-  line-height: 1.75;
+  font-size: 15px; color: rgba(255,255,255,0.75);
+  line-height: 1.8;
+  max-width: 520px;
 }
-.lifestyle-block strong { color: var(--red); }
+.lifestyle-block strong { color: var(--white); font-weight: 700; }
 
-
-.dd-tab { position: relative; display: inline-flex; align-items: center; gap: 5px; }
-.dd-tab .dd-globe { width: 13px; height: 13px; flex-shrink: 0; }
-/* Digital Disciple paired rows */
+/* ─── DIGITAL DISCIPLE ───────────────────────────────── */
+.dd-tab { position: relative; }
+.dd-tab::before {
+  content: '🌍';
+  font-size: 10px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
 .dd-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -564,9 +904,8 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
   grid-template-columns: 1fr;
   margin-bottom: 0;
 }
-@media (max-width: 400px) {
-  .dd-row { grid-template-columns: 1fr; }
-}
+
+/* ─── PANELS ─────────────────────────────────────────── */
 .panel { display: none; }
 .panel.active {
   display: block;
@@ -575,52 +914,143 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
 /* ─── FOOTER ─────────────────────────────────────────── */
 .footer {
-  background: var(--cream);
-  border-top: 1px solid var(--border);
-  padding: 28px 20px;
+  background: var(--black);
+  padding: 48px 24px 32px;
+  margin-top: -1px;
+  color: var(--white);
 }
 .footer-inner {
   max-width: var(--max); margin: 0 auto;
-  display: flex; flex-direction: column; gap: 14px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: start;
 }
-.footer-logo { font-size:16px; font-weight:800; letter-spacing:-0.01em; }
-.footer-logo span { color:var(--red); }
-.footer-address { font-size:12px; color:var(--muted); line-height:1.8; }
-.footer-socials { display:flex; gap:20px; flex-wrap:wrap; }
+.footer-left {}
+.footer-logo {
+  font-size: 20px; font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.footer-logo span { color: var(--red); }
+.footer-address {
+  font-size: 12px; color: rgba(255,255,255,0.4);
+  line-height: 1.8;
+}
+.footer-right {
+  text-align: right;
+}
+.footer-socials {
+  display: flex; flex-direction: column; gap: 6px;
+  align-items: flex-end;
+}
 .footer-socials a {
-  font-size:12px; font-weight:600;
-  letter-spacing:0.05em; text-transform:uppercase;
-  color:var(--muted);
-  transition: color var(--ease);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  transition: color 180ms var(--ease-out);
 }
-.footer-socials a:hover { color:var(--black); }
+.footer-socials a:hover { color: var(--white); }
+.footer-bottom {
+  max-width: var(--max);
+  margin: 32px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-tagline {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+}
+.footer-credit {
+  font-size: 10px;
+  color: rgba(255,255,255,0.2);
+}
+.footer-credit a {
+  color: rgba(255,255,255,0.35);
+  transition: color 180ms var(--ease-out);
+}
+.footer-credit a:hover { color: var(--white); }
 
 /* ─── TOAST ──────────────────────────────────────────── */
 .toast {
-  position:fixed; bottom:20px; left:50%;
+  position:fixed; bottom:24px; left:50%;
   transform:translateX(-50%) translateY(64px);
   background:var(--black); color:#fff;
-  font-size:13px; font-weight:500;
-  padding:11px 20px; border-radius:100px;
+  font-size:12px; font-weight:600;
+  letter-spacing: 0.02em;
+  padding:12px 20px; border-radius:4px;
   z-index:200; opacity:0;
-  transition:transform 0.25s ease, opacity 0.25s ease;
+  transition:transform 0.25s var(--ease-out), opacity 0.25s var(--ease-out);
   white-space:nowrap; pointer-events:none;
   display:flex; align-items:center; gap:8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
 }
-.toast-check {
+.toast::before {
+  content:'✓';
   background: var(--red);
-  width:18px; height:18px;
+  color:#fff; width:18px; height:18px;
   border-radius:50%; display:flex;
   align-items:center; justify-content:center;
+  font-size:10px; font-weight:800;
   flex-shrink:0;
-}
-.toast-check svg {
-  width:10px; height:10px; stroke:#fff; fill:none;
-  stroke-width:3; stroke-linecap:round; stroke-linejoin:round;
 }
 .toast.show {
   transform:translateX(-50%) translateY(0);
   opacity:1;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 600px) {
+  .hero-inner { padding: 40px 20px 0; }
+  .hero-content { grid-template-columns: 1fr; }
+  .hero-graphic { width: 70%; margin: 12px auto 0; }
+  .hero-desc { margin-top: 20px; }
+  .hero-bottom { padding-bottom: 32px; }
+  .hero-meta { text-align: left; margin-left: 0; }
+  .video-explainer-inner { grid-template-columns: 1fr; gap: 28px; }
+  .video-explainer { padding: 32px 20px 40px; }
+  .video-explainer-text { padding: 0; }
+  .content { padding: 0 20px 0; }
+  .platform-intro { padding: 28px 0 24px; margin-bottom: 28px; }
+  .platform-intro h2 { font-size: 26px; }
+  .tabs { padding: 0 20px; }
+  .tab-btn { padding: 14px 14px 12px; font-size: 10px; }
+  .asset-grid { gap: 8px; }
+  .card-foot { opacity: 1; padding: 10px; }
+  .card-name { font-size: 10px; }
+  .dl-btn { padding: 7px 10px; font-size: 9px; }
+  .lifestyle-block { margin: 4px -20px 0; padding: 36px 24px 48px; }
+  .editorial-break { margin: 36px -20px; padding: 36px 20px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+  .footer-right { text-align: left; }
+  .footer-socials { align-items: flex-start; flex-direction: row; flex-wrap: wrap; gap: 12px; }
+  .share-block { padding: 20px; }
+  .handle-row { padding: 8px 10px; }
+  .handle-icon { width: 28px; height: 28px; }
+  .handle-icon svg { width: 13px; height: 13px; }
+  .handle-info strong { font-size: 12px; }
+  .caption-card { padding: 14px; gap: 10px; }
+  .dd-row { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 8px; align-items: flex-start; }
+  .scripture-bar { font-size: 9px; letter-spacing: 0.14em; padding: 12px 20px; }
+}
+
+@media (min-width: 1024px) {
+  .hero-inner { padding: 80px 48px 0; }
+  .lifestyle-block { 
+    margin: 4px calc(-1 * (100vw - var(--max)) / 2 - 24px) 0;
+    padding: 64px calc((100vw - var(--max)) / 2 + 24px);
+  }
+  .editorial-break {
+    margin: 48px calc(-1 * (100vw - var(--max)) / 2 - 24px);
+    padding: 64px calc((100vw - var(--max)) / 2 + 24px);
+  }
 }
 </style>
 </head>
@@ -628,26 +1058,66 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
 <!-- NAV -->
 <nav class="nav">
-  <div class="nav-logo">2819<span class="dot">.</span><span class="church">Church</span></div>
-  <div class="nav-right">Multiply</div>
+  <div class="nav-logo">2819<span class="dot">.</span>CHURCH</div>
+  <div class="nav-right">Multiply ×</div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <p class="hero-eyebrow">Resurrection Sunday · Share Campaign</p>
-  <h1 class="hero-title">Mult<em>iply</em> the Word.</h1>
-  <div class="hero-line"></div>
-  <p class="hero-sub">The Gospel spreads person to person. <strong>Download a Multiplier, post it with intention, and invite someone by name.</strong> We all have a platform and a purpose — your feed, your messages, your voice. That is your mission field.</p>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Resurrection Sunday <span>×</span> Share Campaign</p>
+    <div class="hero-content">
+      <div class="hero-titles">
+        <h1 class="hero-title">Mult<em>iply</em></h1>
+        <p class="hero-subtitle">the Word.</p>
+        <p class="hero-desc">The Gospel spreads person to person. <strong>Download a Multiplier, post it with intention, and invite someone by name.</strong> Your feed is your mission field.</p>
+      </div>
+      <div class="hero-graphic">
+        <img src="https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/hero-collage.jpg" alt="Book of Matthew sermon series artwork — cross-shaped collage" loading="eager">
+      </div>
+    </div>
+    <div class="hero-bottom">
+      <div class="hero-meta">
+        <div class="hero-date">April 5, 2026</div>
+        <div class="hero-loc">Atlanta, GA</div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- VIDEO EXPLAINER -->
+<div class="video-explainer">
+  <div class="video-explainer-inner">
+    <div class="video-explainer-text">
+      <div class="video-explainer-label">Watch First</div>
+      <h2 class="video-explainer-heading">Why <em>Multiply?</em></h2>
+      <p class="video-explainer-body">Before you download, hear the heart behind this campaign. <strong>One invitation can change a life.</strong> Learn how to use these Multipliers, why your platform matters, and what it looks like to make sharing the Gospel a lifestyle.</p>
+    </div>
+    <div class="video-frame">
+      <!-- Replace with YouTube embed when video is ready -->
+      <div class="video-placeholder">
+        <div class="video-play-icon">
+          <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+        </div>
+        <span>Video Coming Soon</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SCRIPTURE BAR -->
+<div class="scripture-bar">Until All Have Heard — Matthew 28:19</div>
 
 <!-- TABS -->
 <div class="tabs-wrap">
-  <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('instagram',this)">Instagram</button>
-    <button class="tab-btn" onclick="switchTab('tiktok',this)">TikTok</button>
-    <button class="tab-btn" onclick="switchTab('facebook',this)">Facebook</button>
-    <button class="tab-btn" onclick="switchTab('video',this)">Video</button>
-    <button class="tab-btn dd-tab" onclick="switchTab('digital',this)"><svg class="dd-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z"/></svg>Digital Disciple</button>
+  <div class="tabs-inner">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('instagram',this)">Instagram</button>
+      <button class="tab-btn" onclick="switchTab('tiktok',this)">TikTok</button>
+      <button class="tab-btn" onclick="switchTab('facebook',this)">Facebook</button>
+      <button class="tab-btn" onclick="switchTab('video',this)">Video</button>
+      <button class="tab-btn dd-tab" onclick="switchTab('digital',this)">Digital Disciple</button>
+    </div>
   </div>
 </div>
 
@@ -668,14 +1138,19 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     <div class="block-label">Story <span class="format-tag">9:16</span></div>
     <div class="asset-grid" id="grid-ig-story"></div>
 
+    <div class="editorial-break">
+      <p class="pull-quote">One invitation can <strong>change a life.</strong> Your feed, your messages, your voice — that is your mission field.</p>
+      <span class="pull-ref">Multiply × 2819</span>
+    </div>
+
     <div class="step-label">Step 2 — Add a Caption</div>
     <div class="caption-block">
       <div class="caption-list" id="caps-instagram"></div>
     </div>
 
     <div class="share-block" id="share-instagram">
-      <div class="block-label">Tag &amp; Mention</div>
-      <h2 class="share-heading">Tag &amp; <em>Mention</em></h2>
+      <div class="block-label">Tag & Mention</div>
+      <h2 class="share-heading">Tag & <em>Mention</em></h2>
       <p class="share-sub">Copy our handle and drop it in your post, story, or caption so your followers can find us.</p>
       <div class="handles-list" id="handles-instagram"></div>
     </div>
@@ -694,6 +1169,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
     <div class="step-label">Step 3 — Invite Someone by Name</div>
     <div class="lifestyle-block">
+      <div class="lf-eyebrow">Make It a Lifestyle</div>
       <p>Tag a specific person. Send it in a DM. Ask them directly. One invitation is one act of multiplication — and it is one of the most powerful things you can do. Make inviting people to the gathering and sharing 2819 posts a lifestyle, not a one-time event. <strong>See you at the next gathering.</strong></p>
     </div>
   </div>
@@ -712,14 +1188,19 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     <div class="block-label">Video <span class="format-tag">9:16</span></div>
     <div class="asset-grid" id="grid-tt-video"></div>
 
+    <div class="editorial-break">
+      <p class="pull-quote">Duet it. Stitch it. <strong>Send it to someone directly.</strong> One share is one act of multiplication.</p>
+      <span class="pull-ref">Multiply × 2819</span>
+    </div>
+
     <div class="step-label">Step 2 — Add a Caption</div>
     <div class="caption-block">
       <div class="caption-list" id="caps-tiktok"></div>
     </div>
 
     <div class="share-block">
-      <div class="block-label">Tag &amp; Mention</div>
-      <h2 class="share-heading">Tag &amp; <em>Mention</em></h2>
+      <div class="block-label">Tag & Mention</div>
+      <h2 class="share-heading">Tag & <em>Mention</em></h2>
       <p class="share-sub">Copy our handle and drop it in your video description or comments so people can find us.</p>
       <div class="handles-list" id="handles-tiktok"></div>
     </div>
@@ -738,6 +1219,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
     <div class="step-label">Step 3 — Invite Someone by Name</div>
     <div class="lifestyle-block">
+      <div class="lf-eyebrow">Make It a Lifestyle</div>
       <p>Duet it. Stitch it. Send it to someone directly. One share is one act of multiplication. Make inviting people to the gathering a lifestyle — not a one-time thing. <strong>See you at the next gathering.</strong></p>
     </div>
   </div>
@@ -756,14 +1238,19 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     <div class="block-label">Story <span class="format-tag">9:16</span></div>
     <div class="asset-grid" id="grid-fb-story"></div>
 
+    <div class="editorial-break">
+      <p class="pull-quote">Every post is an <strong>invitation.</strong> Not just during Resurrection Sunday — every single week.</p>
+      <span class="pull-ref">Multiply × 2819</span>
+    </div>
+
     <div class="step-label">Step 2 — Add a Caption</div>
     <div class="caption-block">
       <div class="caption-list" id="caps-facebook"></div>
     </div>
 
     <div class="share-block">
-      <div class="block-label">Tag &amp; Mention</div>
-      <h2 class="share-heading">Tag &amp; <em>Mention</em></h2>
+      <div class="block-label">Tag & Mention</div>
+      <h2 class="share-heading">Tag & <em>Mention</em></h2>
       <p class="share-sub">Copy our handle and mention us in your post so your network can find the gathering.</p>
       <div class="handles-list" id="handles-facebook"></div>
     </div>
@@ -781,6 +1268,7 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
     <div class="step-label">Step 3 — Invite Someone by Name</div>
     <div class="lifestyle-block">
+      <div class="lf-eyebrow">Make It a Lifestyle</div>
       <p>Tag a friend. Share it directly in a message. Ask someone by name. Making multiplication a lifestyle means every post is an invitation — not just during Easter, but every single week. <strong>See you at the next gathering.</strong></p>
     </div>
   </div>
@@ -804,14 +1292,15 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
     <div class="step-label">Step 2 — Post with Purpose</div>
     <div class="share-block">
-      <div class="block-label">Tag &amp; Mention</div>
-      <h2 class="share-heading">Tag &amp; <em>Mention</em></h2>
+      <div class="block-label">Tag & Mention</div>
+      <h2 class="share-heading">Tag & <em>Mention</em></h2>
       <p class="share-sub">After posting your video, tag us so we can reshare and amplify your post.</p>
       <div class="handles-list" id="handles-video"></div>
     </div>
 
     <div class="step-label">Step 3 — Invite Someone by Name</div>
     <div class="lifestyle-block">
+      <div class="lf-eyebrow">Make It a Lifestyle</div>
       <p>Send the video directly to someone in a DM and ask them by name to join the next gathering. Video is one of the most personal ways to invite — use it. <strong>See you at the next gathering.</strong></p>
     </div>
   </div>
@@ -853,14 +1342,19 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
     <div class="block-label">Video <span class="format-tag">9:16</span></div>
     <div class="asset-grid" id="grid-dd-video"></div>
 
+    <div class="editorial-break">
+      <p class="pull-quote">The glory of God is <strong>not confined to four walls.</strong> Your feed is your mission field — wherever you are.</p>
+      <span class="pull-ref">Matthew 28:19</span>
+    </div>
+
     <div class="step-label">Step 2 — Add a Caption</div>
     <div class="caption-block">
       <div class="caption-list" id="caps-digital"></div>
     </div>
 
     <div class="share-block">
-      <div class="block-label">Tag &amp; Mention</div>
-      <h2 class="share-heading">Tag &amp; <em>Mention</em></h2>
+      <div class="block-label">Tag & Mention</div>
+      <h2 class="share-heading">Tag & <em>Mention</em></h2>
       <p class="share-sub">Tag us wherever you are in the world. We are watching, praying for you by name, and cheering on every share. The digital family is global — and growing.</p>
       <div class="handles-list" id="handles-digital"></div>
     </div>
@@ -880,29 +1374,40 @@ button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
 
     <div class="step-label">Step 3 — Invite Someone by Name</div>
     <div class="lifestyle-block">
+      <div class="lf-eyebrow">Make It a Lifestyle</div>
       <p>You do not need a stage or a platform to multiply disciples — you need a purpose. Send a Multiplier to someone in your city, your country, your family. Make sharing 2819 posts and inviting people to the gathering a lifestyle, not an event. <strong>See you at the next gathering.</strong></p>
     </div>
   </div>
 
+</div>
+
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-logo">2819<span style="color:var(--red)">.</span><span style="color:var(--red);text-transform:uppercase;letter-spacing:0.04em;margin-left:2px;">Church</span></div>
-    <div class="footer-address">
-      3350 Greenbriar Pkwy SW · Atlanta, GA<br>
-      Sundays: 8A · 10:30A · 1P
+    <div class="footer-left">
+      <div class="footer-logo">2819<span>.</span>Church</div>
+      <div class="footer-address">
+        3350 Greenbriar Pkwy SW · Atlanta, GA<br>
+        Sundays: 8A · 10:30A · 1P
+      </div>
     </div>
-    <div class="footer-socials">
-      <a href="https://instagram.com/2819church" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://tiktok.com/@2819church" target="_blank" rel="noopener">TikTok</a>
-      <a href="https://facebook.com/2819church" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://youtube.com/@2819church" target="_blank" rel="noopener">YouTube</a>
-      <a href="https://2819church.org" target="_blank" rel="noopener">2819church.org</a>
+    <div class="footer-right">
+      <div class="footer-socials">
+        <a href="https://instagram.com/2819church" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://tiktok.com/@2819church" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://facebook.com/2819church" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://youtube.com/@2819church" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://2819church.org" target="_blank" rel="noopener">2819church.org</a>
+      </div>
     </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-tagline">Until All Have Heard × Matthew 28:19</div>
+    <div class="footer-credit"><a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a></div>
   </div>
 </footer>
 
-<div class="toast" id="toast"><span class="toast-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span id="toast-msg"></span></div>
+<div class="toast" id="toast"></div>
 
 <script>
 
@@ -927,38 +1432,39 @@ async function trackEvent(action, platform, assetName = '') {
 }
 
 // ─── ASSET DATA ──────────────────────────────────────────
-// Fill url: '' with real CDN/Drive URLs before launch.
+const THUMB_BASE = 'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/';
+
 const ASSETS = {
   'ig-post':    [
-    { name:'Multiply 1',       ratio:'sq',  url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/post-1.jpg', size:'3.2MB' },
-    { name:'Multiply 2',       ratio:'sq',  url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/post-2.jpg', size:'2.9MB' },
-    { name:'Invite – Church',  ratio:'sq',  url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/post-3.jpg', size:'2.7MB' },
-    { name:'Invite – Church 2',ratio:'sq',  url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/post-4.jpg', size:'3.0MB' },
+    { name:'Multiply 1',       ratio:'portrait',  url:'', size:'3.2MB', thumb: THUMB_BASE + 'post-1.jpg' },
+    { name:'Multiply 2',       ratio:'portrait',  url:'', size:'2.9MB', thumb: THUMB_BASE + 'post-2.jpg' },
+    { name:'Invite – Church',  ratio:'portrait',  url:'', size:'2.7MB', thumb: THUMB_BASE + 'post-3.jpg' },
+    { name:'Invite – Church 2',ratio:'portrait',  url:'', size:'3.0MB', thumb: THUMB_BASE + 'post-4.jpg' },
   ],
   'ig-story':   [
-    { name:'Multiply Story',   ratio:'vrt', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/story-1.jpg', size:'4.0MB' },
-    { name:'Invite – Church',  ratio:'vrt', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/story-2.jpg', size:'3.8MB' },
-    { name:'Invite Story 2',   ratio:'vrt', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/story-3.jpg', size:'3.6MB' },
+    { name:'Multiply Story',   ratio:'vrt', url:'', size:'4.0MB', thumb: THUMB_BASE + 'story-1.jpg' },
+    { name:'Invite – Church',  ratio:'vrt', url:'', size:'3.8MB', thumb: THUMB_BASE + 'story-2.jpg' },
+    { name:'Invite Story 2',   ratio:'vrt', url:'', size:'3.6MB', thumb: THUMB_BASE + 'story-3.jpg' },
   ],
   'tt-graphic': [
-    { name:'Multiply – TT',    ratio:'vrt', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/story-1.jpg', size:'4.1MB' },
-    { name:'Invite – Church',  ratio:'vrt', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/story-2.jpg', size:'3.9MB' },
+    { name:'Multiply – TT',    ratio:'vrt', url:'', size:'4.1MB', thumb: THUMB_BASE + 'story-1.jpg' },
+    { name:'Invite – Church',  ratio:'vrt', url:'', size:'3.9MB', thumb: THUMB_BASE + 'story-2.jpg' },
   ],
   'tt-video':   [
     { name:'Campaign Reel',    ratio:'vrt', url:'', size:'22MB'  },
     { name:'Short Cut – 30s',  ratio:'vrt', url:'', size:'14MB'  },
   ],
   'fb-post':    [
-    { name:'Multiply – FB',    ratio:'sq',  url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/post-5.jpg', size:'3.1MB' },
-    { name:'Invite – Church',  ratio:'sq',  url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/post-6.jpg', size:'2.8MB' },
-    { name:'Invite – Church 2',ratio:'sq',  url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/post-7.jpg', size:'2.9MB' },
+    { name:'Multiply – FB',    ratio:'sq',  url:'', size:'3.1MB', thumb: THUMB_BASE + 'post-5.jpg' },
+    { name:'Invite – Church',  ratio:'sq',  url:'', size:'2.8MB', thumb: THUMB_BASE + 'post-6.jpg' },
+    { name:'Invite – Church 2',ratio:'sq',  url:'', size:'2.9MB', thumb: THUMB_BASE + 'post-7.jpg' },
   ],
   'fb-story':   [
-    { name:'Multiply Story',   ratio:'vrt', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/story-3.jpg', size:'4.0MB' },
-    { name:'Invite – Church',  ratio:'vrt', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/story-4.jpg', size:'3.7MB' },
+    { name:'Multiply Story',   ratio:'vrt', url:'', size:'4.0MB', thumb: THUMB_BASE + 'story-3.jpg' },
+    { name:'Invite – Church',  ratio:'vrt', url:'', size:'3.7MB', thumb: THUMB_BASE + 'story-4.jpg' },
   ],
   'vid-land':   [
-    { name:'Promo – Full',     ratio:'lnd', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/landscape-1.jpg', size:'34MB'  },
+    { name:'Promo – Full',     ratio:'lnd', url:'', size:'34MB', thumb: THUMB_BASE + 'landscape-1.jpg' },
     { name:'Sunday Highlight', ratio:'lnd', url:'', size:'28MB'  },
   ],
   'vid-vert':   [
@@ -969,10 +1475,10 @@ const ASSETS = {
     { name:'Square Cut',       ratio:'sq',  url:'', size:'18MB'  },
   ],
   // ── DIGITAL DISCIPLE — one per platform ──
-  'dd-ig-post':  [{ name:'Multiply – Global',  ratio:'sq',  url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/post-1.jpg', size:'2.9MB' }],
-  'dd-ig-story': [{ name:'Multiply Story',     ratio:'vrt', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/story-1.jpg', size:'4.0MB' }],
-  'dd-tiktok':   [{ name:'Multiply – TT',      ratio:'vrt', url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/story-2.jpg', size:'4.1MB' }],
-  'dd-facebook': [{ name:'Multiply – FB',      ratio:'sq',  url:'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/post-5.jpg', size:'3.1MB' }],
+  'dd-ig-post':  [{ name:'Multiply – Global',  ratio:'sq',  url:'', size:'2.9MB', thumb: THUMB_BASE + 'post-1.jpg' }],
+  'dd-ig-story': [{ name:'Multiply Story',     ratio:'vrt', url:'', size:'4.0MB', thumb: THUMB_BASE + 'story-1.jpg' }],
+  'dd-tiktok':   [{ name:'Multiply – TT',      ratio:'vrt', url:'', size:'4.1MB', thumb: THUMB_BASE + 'story-2.jpg' }],
+  'dd-facebook': [{ name:'Multiply – FB',      ratio:'sq',  url:'', size:'3.1MB', thumb: THUMB_BASE + 'post-5.jpg' }],
   'dd-video':    [
     { name:'Campaign Reel',    ratio:'vrt', url:'', size:'22MB'  },
     { name:'Short Cut – 30s',  ratio:'vrt', url:'', size:'14MB'  },
@@ -1003,7 +1509,6 @@ const CAPTIONS = {
 };
 
 // ─── SOCIAL HANDLES ──────────────────────────────────────
-// All handles shown on every platform tab; subset highlighted per context.
 const ICONS = {
   ig: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="white" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="white"/></svg>`,
   tt: `<svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.27 8.27 0 004.84 1.54V6.79a4.85 4.85 0 01-1.07-.1z"/></svg>`,
@@ -1020,7 +1525,6 @@ const ALL_HANDLES = [
   { platform:'X (Twitter)',icon:'x',  handle:'@2819church', url:'https://x.com/2819church' },
 ];
 
-// Each tab shows all handles so people can cross-post
 const HANDLES_PER_TAB = {
   instagram: ALL_HANDLES,
   tiktok:    ALL_HANDLES,
@@ -1030,30 +1534,38 @@ const HANDLES_PER_TAB = {
 };
 
 // ─── GRID BUILDER ────────────────────────────────────────
-function buildGrid(id, skipAnim) {
+function buildGrid(id) {
   const assets = ASSETS[id] || [];
   const el = document.getElementById('grid-' + id);
   if (!el) return;
   el.innerHTML = assets.map((a, i) => {
     const has = a.url && a.url.trim() !== '';
+    const hasThumb = a.thumb && a.thumb.trim() !== '';
     const btn = has
       ? `<a class="dl-btn" href="${a.url}" download="${a.name}" onclick="onDownload(this)">
            <svg viewBox="0 0 24 24"><path d="M12 3v13M5 16l7 7 7-7"/><path d="M3 21h18"/></svg>
            Download
          </a>`
-      : `<span class="dl-btn dl-btn-soon">Coming Soon</span>`;
+      : `<button class="dl-btn" onclick="onDownload(this)">
+           <svg viewBox="0 0 24 24"><path d="M12 3v13M5 16l7 7 7-7"/><path d="M3 21h18"/></svg>
+           Download
+         </button>`;
 
-    const thumb = has
-      ? `<img src="${a.url}" alt="${a.name}" loading="lazy">`
-      : `<div class="thumb-ph"><span class="thumb-ph-label">${a.name}</span></div>`;
+    const thumb = hasThumb
+      ? `<img src="${a.thumb}" alt="${a.name}" loading="lazy">`
+      : has
+        ? `<img src="${a.url}" alt="${a.name}" loading="lazy">`
+        : `<div class="thumb-ph"><span class="thumb-ph-label">${a.name}<br>Coming Soon</span></div>`;
 
-    const animStyle = skipAnim ? '' : `style="animation:fadeUp 0.35s ease ${i*0.06}s both"`;
+    const tag = hasThumb || has
+      ? `<span class="thumb-tag">Multiply</span>`
+      : `<span class="thumb-tag" style="background:rgba(255,255,255,0.08)">Soon</span>`;
 
     return `
-      <div class="asset-card" ${animStyle}>
+      <div class="asset-card" style="animation:fadeUp 0.35s ease ${i*0.06}s both">
         <div class="thumb ${a.ratio}">
           ${thumb}
-          <span class="thumb-tag">Multiply</span>
+          ${tag}
         </div>
         <div class="card-foot">
           <div>
@@ -1096,38 +1608,14 @@ function buildHandles(tab) {
 }
 
 // ─── TAB SWITCH ──────────────────────────────────────────
-const _viewedPanels = new Set(['instagram']); // first tab is viewed on load
 function switchTab(platform, btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   const panel = document.getElementById('panel-' + platform);
   panel.classList.add('active');
-  // Re-build grids without animation if already viewed
-  const skipAnim = _viewedPanels.has(platform);
-  const gridMap = {
-    instagram: ['ig-post','ig-story'],
-    tiktok: ['tt-graphic','tt-video'],
-    facebook: ['fb-post','fb-story'],
-    video: ['vid-land','vid-vert','vid-sq'],
-    digital: ['dd-ig-post','dd-ig-story','dd-tiktok','dd-facebook','dd-video'],
-  };
-  if (skipAnim && gridMap[platform]) {
-    gridMap[platform].forEach(g => buildGrid(g, true));
-  }
-  _viewedPanels.add(platform);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-// ─── STICKY TAB OFFSET ──────────────────────────────────────
-function updateTabOffset() {
-  const nav = document.querySelector('.nav');
-  if (nav) {
-    document.querySelector('.tabs-wrap').style.top = nav.offsetHeight + 'px';
-  }
-}
-window.addEventListener('load', updateTabOffset);
-window.addEventListener('resize', updateTabOffset);
 
 // ─── DOWNLOAD FEEDBACK ───────────────────────────────────
 function onDownload(btn) {
@@ -1144,26 +1632,10 @@ function onDownload(btn) {
   showToast('Downloading — check your camera roll.');
 }
 
-// ─── CLIPBOARD FALLBACK ──────────────────────────────────────
-function copyToClipboard(text) {
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    return navigator.clipboard.writeText(text);
-  }
-  const textarea = document.createElement('textarea');
-  textarea.value = text;
-  textarea.style.position = 'fixed';
-  textarea.style.opacity = '0';
-  document.body.appendChild(textarea);
-  textarea.select();
-  document.execCommand('copy');
-  document.body.removeChild(textarea);
-  return Promise.resolve();
-}
-
 // ─── COPY HELPERS ─────────────────────────────────────────
 function copyCap(btn, platform, idx) {
   trackEvent('caption_copy', platform);
-  copyToClipboard(CAPTIONS[platform][idx]).then(() => {
+  navigator.clipboard.writeText(CAPTIONS[platform][idx]).then(() => {
     btn.textContent = 'Copied';
     btn.classList.add('done');
     setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('done'); }, 2200);
@@ -1171,11 +1643,11 @@ function copyCap(btn, platform, idx) {
   });
 }
 function copyText(txt) {
-  copyToClipboard(txt).then(() => showToast(txt + ' copied.'));
+  navigator.clipboard.writeText(txt).then(() => showToast(txt + ' copied.'));
 }
 function copyHandle(btn, handle, platform) {
   trackEvent('handle_copy', platform, handle);
-  copyToClipboard(handle).then(() => {
+  navigator.clipboard.writeText(handle).then(() => {
     btn.textContent = 'Copied';
     btn.classList.add('done');
     setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('done'); }, 2200);
@@ -1187,7 +1659,7 @@ function copyHandle(btn, handle, platform) {
 let _tt;
 function showToast(msg) {
   const el = document.getElementById('toast');
-  document.getElementById('toast-msg').textContent = msg;
+  el.textContent = msg;
   el.classList.add('show');
   clearTimeout(_tt);
   _tt = setTimeout(() => el.classList.remove('show'), 2600);
