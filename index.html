@@ -1094,13 +1094,16 @@ body::after {
       <p class="video-explainer-body">Before you download, hear the heart behind this campaign. <strong>One invitation can change a life.</strong> Learn how to use these Multipliers, why your platform matters, and what it looks like to make sharing the Gospel a lifestyle.</p>
     </div>
     <div class="video-frame">
-      <!-- Replace with YouTube embed when video is ready -->
-      <div class="video-placeholder">
-        <div class="video-play-icon">
-          <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
-        </div>
-        <span>Video Coming Soon</span>
-      </div>
+      <video
+        playsinline
+        controls
+        controlsList="nodownload"
+        oncontextmenu="return false;"
+        poster=""
+        style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"
+      >
+        <source src="https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/video/multiply-explainer.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </div>
