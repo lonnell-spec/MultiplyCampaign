@@ -77,7 +77,7 @@
       <p class="video-explainer-body">Before you download, hear the heart behind this campaign. <strong>One invitation can change a life.</strong> Learn how to use these Multipliers, why your platform matters, and what it looks like to make sharing the Gospel a lifestyle.</p>
     </div>
     <div class="video-frame">
-      <video playsinline controls loop controlsList="nodownload" oncontextmenu="return false;" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+      <video playsinline controls loop controlsList="nodownload" oncontextmenu="return false;" poster="https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/video-poster.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
         <source src="https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/video/multiply-explainer.mp4" type="video/mp4">
       </video>
     </div>
@@ -408,8 +408,8 @@ function buildGrid(id) {
     const has = a.url && a.url.trim() !== '';
     const hasThumb = a.thumb && a.thumb.trim() !== '';
     const btn = has
-      ? `<a class="dl-btn" href="${a.url}" download="${a.name}" onclick="onDownload(this)"><svg viewBox="0 0 24 24"><path d="M12 3v13M5 16l7 7 7-7"/><path d="M3 21h18"/></svg>Download</a>`
-      : `<button class="dl-btn" onclick="onDownload(this)"><svg viewBox="0 0 24 24"><path d="M12 3v13M5 16l7 7 7-7"/><path d="M3 21h18"/></svg>Download</button>`;
+      ? `<button class="dl-btn" onclick="triggerDownload('${a.url}','${a.name}',this)"><svg viewBox="0 0 24 24"><path d="M12 3v13M5 16l7 7 7-7"/><path d="M3 21h18"/></svg>Download</button>`
+      : `<button class="dl-btn" style="opacity:.35;cursor:default"><svg viewBox="0 0 24 24"><path d="M12 3v13M5 16l7 7 7-7"/><path d="M3 21h18"/></svg>Soon</button>`;
     const thumb = hasThumb ? `<img src="${a.thumb}" alt="${a.name}" loading="lazy">` : has ? `<img src="${a.url}" alt="${a.name}" loading="lazy">` : `<div class="thumb-ph"><span class="thumb-ph-label">${a.name}<br>Coming Soon</span></div>`;
     const tag = hasThumb || has ? `<span class="thumb-tag">Multiply</span>` : `<span class="thumb-tag" style="background:rgba(255,255,255,0.08)">Soon</span>`;
     return `<div class="asset-card" style="animation:fadeUp 0.35s ease ${i*0.06}s both"><div class="thumb ${a.ratio}">${thumb}${tag}</div><div class="card-foot"><div><div class="card-name">${a.name}</div><div class="card-size">${a.size}</div></div>${btn}</div></div>`;
@@ -437,15 +437,41 @@ function switchTab(platform, btn) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function onDownload(btn) {
-  const assetName = btn.closest('.asset-card')?.querySelector('.card-name')?.textContent || '';
-  const platform  = document.querySelector('.panel.active')?.id?.replace('panel-','') || '';
-  trackEvent('download', platform, assetName);
+function triggerDownload(url, name, btn) {
+  const platform = document.querySelector('.panel.active')?.id?.replace('panel-','') || '';
+  trackEvent('download', platform, name);
   btn.classList.add('fired');
   const orig = btn.innerHTML;
-  btn.innerHTML = `<svg viewBox="0 0 24 24" style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><path d="M20 6L9 17l-5-5"/></svg> Saved`;
-  setTimeout(() => { btn.classList.remove('fired'); btn.innerHTML = orig; }, 2200);
-  showToast('Downloading — check your camera roll.');
+  const SAVED = `<svg viewBox="0 0 24 24" style="width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><path d="M20 6L9 17l-5-5"/></svg> Saved`;
+  btn.innerHTML = SAVED;
+  // iOS Safari cannot force-save to Camera Roll from the web
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  if (isIOS) {
+    window.open(url, '_blank');
+    showToast('Press & hold the image → Save to Photos');
+    setTimeout(() => { btn.classList.remove('fired'); btn.innerHTML = orig; }, 3000);
+    return;
+  }
+  // Desktop + Android: fetch blob → trigger real download
+  fetch(url)
+    .then(r => { if (!r.ok) throw new Error(); return r.blob(); })
+    .then(blob => {
+      const ext = blob.type.includes('mp4') ? '.mp4' : '.jpg';
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = name + ext;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+      showToast('Saved to your downloads folder.');
+      setTimeout(() => { btn.classList.remove('fired'); btn.innerHTML = orig; }, 2500);
+    })
+    .catch(() => {
+      window.open(url, '_blank');
+      showToast('Tap & hold the image to save it.');
+      setTimeout(() => { btn.classList.remove('fired'); btn.innerHTML = orig; }, 2500);
+    });
 }
 
 function copyCap(btn, platform, idx) {
