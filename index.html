@@ -439,7 +439,9 @@ function switchTab(platform, btn) {
   btn.classList.add('active');
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.getElementById('panel-' + platform).classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const tabsEl = document.querySelector('.tabs-wrap');
+  const navH = document.querySelector('.nav')?.offsetHeight || 48;
+  window.scrollTo({ top: tabsEl.offsetTop - navH, behavior: 'smooth' });
 }
 
 async function triggerDownload(url, name, btn) {

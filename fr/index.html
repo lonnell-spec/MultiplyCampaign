@@ -1025,7 +1025,9 @@ function switchTab(platform, btn) {
     gridMap[platform].forEach(g => buildGrid(g, true));
   }
   _viewedPanels.add(platform);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const tabsEl = document.querySelector('.tabs-wrap');
+  const navH = document.querySelector('.nav')?.offsetHeight || 48;
+  window.scrollTo({ top: tabsEl.offsetTop - navH, behavior: 'smooth' });
 }
 
 // ─── STICKY TAB OFFSET ──────────────────────────────────────
