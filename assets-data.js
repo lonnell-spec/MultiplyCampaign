@@ -25,8 +25,8 @@ const ASSETS = {
     { name:'Serve M25',         ratio:'vrt', url: THUMB_BASE + 'serve-m25-story.jpg',   size:'4.1MB', thumb: THUMB_BASE + 'serve-m25-story.jpg' },
   ],
   'tt-video':   [
-    { name:'Sunday Invite',      ratio:'vrt', url: VIDEO_BASE + 'Sunday%20Invite.mp4',         size:'134MB', thumb:'' },
-    { name:'Fully Furnished 2',  ratio:'vrt', url: VIDEO_BASE + 'Fully%20Furnished%202.mp4',   size:'408MB', thumb:'' },
+    { name:'Sunday Invite',     ratio:'vrt', url: VIDEO_BASE + 'Sunday%20Invite.mp4',       size:'134MB', thumb: THUMB_BASE + 'sunday-invite-thumb.jpg' },
+    { name:'Fully Furnished 2', ratio:'vrt', url: VIDEO_BASE + 'Fully%20Furnished%202.mp4', size:'408MB', thumb: THUMB_BASE + 'fully-furnished-2-thumb.jpg' },
   ],
   'fb-post':    [
     { name:'Good Friday Night', ratio:'sq', url: THUMB_BASE + 'gf-worship-post.jpg',   size:'2.8MB', thumb: THUMB_BASE + 'gf-worship-post.jpg' },
@@ -42,8 +42,8 @@ const ASSETS = {
   ],
   'vid-land':   [],
   'vid-vert':   [
-    { name:'Sunday Invite',      ratio:'vrt', url: VIDEO_BASE + 'Sunday%20Invite.mp4',         size:'134MB', thumb:'' },
-    { name:'Fully Furnished 2',  ratio:'vrt', url: VIDEO_BASE + 'Fully%20Furnished%202.mp4',   size:'408MB', thumb:'' },
+    { name:'Sunday Invite',     ratio:'vrt', url: VIDEO_BASE + 'Sunday%20Invite.mp4',       size:'134MB', thumb: THUMB_BASE + 'sunday-invite-thumb.jpg' },
+    { name:'Fully Furnished 2', ratio:'vrt', url: VIDEO_BASE + 'Fully%20Furnished%202.mp4', size:'408MB', thumb: THUMB_BASE + 'fully-furnished-2-thumb.jpg' },
   ],
   'vid-sq':     [],
   'dd-ig-post':  [
@@ -63,7 +63,7 @@ const ASSETS = {
     { name:'Serve M25',         ratio:'sq', url: THUMB_BASE + 'serve-m25-post.jpg',   size:'3.0MB', thumb: THUMB_BASE + 'serve-m25-post.jpg' },
   ],
   'dd-video':    [
-    { name:'Sunday Invite',      ratio:'vrt', url: VIDEO_BASE + 'Sunday%20Invite.mp4',         size:'134MB', thumb:'' },
-    { name:'Fully Furnished 2',  ratio:'vrt', url: VIDEO_BASE + 'Fully%20Furnished%202.mp4',   size:'408MB', thumb:'' },
+    { name:'Sunday Invite',     ratio:'vrt', url: VIDEO_BASE + 'Sunday%20Invite.mp4',       size:'134MB', thumb: THUMB_BASE + 'sunday-invite-thumb.jpg' },
+    { name:'Fully Furnished 2', ratio:'vrt', url: VIDEO_BASE + 'Fully%20Furnished%202.mp4', size:'408MB', thumb: THUMB_BASE + 'fully-furnished-2-thumb.jpg' },
   ],
 };
