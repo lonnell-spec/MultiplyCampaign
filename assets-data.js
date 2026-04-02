@@ -3,6 +3,7 @@
 // Loaded by index.html via <script src="assets-data.js"></script>
 
 const THUMB_BASE = 'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/';
+const VIDEO_BASE = 'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/video/';
 
 const ASSETS = {
   'ig-post':    [
@@ -24,8 +25,7 @@ const ASSETS = {
     { name:'Serve M25',         ratio:'vrt', url: THUMB_BASE + 'serve-m25-story.jpg',   size:'4.1MB', thumb: THUMB_BASE + 'serve-m25-story.jpg' },
   ],
   'tt-video':   [
-    { name:'Campaign Reel',   ratio:'vrt', url:'', size:'22MB' },
-    { name:'Short Cut - 30s', ratio:'vrt', url:'', size:'14MB' },
+    { name:'Sunday Invite',   ratio:'vrt', url: VIDEO_BASE + 'Sunday%20Invite.mp4', size:'', thumb:'' },
   ],
   'fb-post':    [
     { name:'Good Friday Night', ratio:'sq', url: THUMB_BASE + 'gf-worship-post.jpg',   size:'2.8MB', thumb: THUMB_BASE + 'gf-worship-post.jpg' },
@@ -40,14 +40,12 @@ const ASSETS = {
     { name:'Serve M25',         ratio:'vrt', url: THUMB_BASE + 'serve-m25-story.jpg',   size:'4.1MB', thumb: THUMB_BASE + 'serve-m25-story.jpg' },
   ],
   'vid-land':   [
-    { name:'Promo - Full',     ratio:'lnd', url:'', size:'34MB', thumb: THUMB_BASE + 'landscape-1.jpg' },
-    { name:'Sunday Highlight', ratio:'lnd', url:'', size:'28MB' },
+    { name:'Promo - Full',     ratio:'lnd', url:'', size:'', thumb: THUMB_BASE + 'landscape-1.jpg' },
   ],
   'vid-vert':   [
-    { name:'Reel - 60s', ratio:'vrt', url:'', size:'24MB' },
-    { name:'Reel - 30s', ratio:'vrt', url:'', size:'16MB' },
+    { name:'Sunday Invite',   ratio:'vrt', url: VIDEO_BASE + 'Sunday%20Invite.mp4', size:'', thumb:'' },
   ],
-  'vid-sq':     [{ name:'Square Cut', ratio:'sq', url:'', size:'18MB' }],
+  'vid-sq':     [],
   'dd-ig-post':  [
     { name:'Good Friday Night', ratio:'sq', url: THUMB_BASE + 'gf-worship-post.jpg',  size:'2.8MB', thumb: THUMB_BASE + 'gf-worship-post.jpg' },
     { name:'Serve M25',         ratio:'sq', url: THUMB_BASE + 'serve-m25-post.jpg',   size:'3.0MB', thumb: THUMB_BASE + 'serve-m25-post.jpg' },
@@ -65,7 +63,6 @@ const ASSETS = {
     { name:'Serve M25',         ratio:'sq', url: THUMB_BASE + 'serve-m25-post.jpg',   size:'3.0MB', thumb: THUMB_BASE + 'serve-m25-post.jpg' },
   ],
   'dd-video':    [
-    { name:'Campaign Reel',   ratio:'vrt', url:'', size:'22MB' },
-    { name:'Short Cut - 30s', ratio:'vrt', url:'', size:'14MB' },
+    { name:'Sunday Invite',   ratio:'vrt', url: VIDEO_BASE + 'Sunday%20Invite.mp4', size:'', thumb:'' },
   ],
 };
