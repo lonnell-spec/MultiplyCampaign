@@ -25,9 +25,11 @@ const ASSETS = {
     { name:'Community Becomes Family', ratio:'vrt', url: THUMB_BASE + 'community-family-story.jpg', size:'1.7MB', thumb: THUMB_BASE + 'community-family-story.jpg' },
   ],
   'tt-video':   [
-    { name:'Sunday Invite',     ratio:'vrt', url: VIDEO_BASE + 'Sunday%20Invite.mp4',       size:'134MB', thumb: THUMB_BASE + 'sunday-invite-thumb.jpg' },
-    { name:'Fully Furnished 2', ratio:'vrt', url: VIDEO_BASE + 'Fully%20Furnished%202.mp4', size:'408MB', thumb: THUMB_BASE + 'fully-furnished-2-thumb.jpg' },
+    { name:'Sunday Invite',     ratio:'vrt',  url: VIDEO_BASE + 'Sunday%20Invite.mp4',       size:'134MB', thumb: THUMB_BASE + 'sunday-invite-thumb.jpg' },
+    { name:'Fully Furnished 2', ratio:'vrt',  url: VIDEO_BASE + 'Fully%20Furnished%202.mp4', size:'408MB', thumb: THUMB_BASE + 'fully-furnished-2-thumb.jpg' },
     { name:'Draft Invite',      ratio:'land', url: VIDEO_BASE + 'draft%20invite%2002.15-1920.mp4', size:'26MB', thumb: THUMB_BASE + 'draft-invite-thumb.jpg' },
+    { name:'ACCESS Recap (Social)', ratio:'land', url: VIDEO_BASE + 'ACCESS%202819%20Recap%20Social.mp4', size:'57MB', thumb: THUMB_BASE + 'access-recap-social-thumb.jpg' },
+    { name:'ACCESS Recap (Web)',    ratio:'land', url: VIDEO_BASE + 'ACCESS%202819%20Recap%20Web.mp4',    size:'57MB', thumb: THUMB_BASE + 'access-recap-web-thumb.jpg' },
   ],
   'fb-post':    [
     { name:'Clothe The Culture',       ratio:'sq', url: THUMB_BASE + 'clothe-culture-post.jpg',    size:'630KB', thumb: THUMB_BASE + 'clothe-culture-post.jpg' },
@@ -43,11 +45,15 @@ const ASSETS = {
   ],
   'vid-land':   [
     { name:'Draft Invite',      ratio:'land', url: VIDEO_BASE + 'draft%20invite%2002.15-1920.mp4', size:'26MB', thumb: THUMB_BASE + 'draft-invite-thumb.jpg' },
+    { name:'ACCESS Recap (Social)', ratio:'land', url: VIDEO_BASE + 'ACCESS%202819%20Recap%20Social.mp4', size:'57MB', thumb: THUMB_BASE + 'access-recap-social-thumb.jpg' },
+    { name:'ACCESS Recap (Web)',    ratio:'land', url: VIDEO_BASE + 'ACCESS%202819%20Recap%20Web.mp4',    size:'57MB', thumb: THUMB_BASE + 'access-recap-web-thumb.jpg' },
   ],
   'vid-vert':   [
-    { name:'Sunday Invite',     ratio:'vrt', url: VIDEO_BASE + 'Sunday%20Invite.mp4',       size:'134MB', thumb: THUMB_BASE + 'sunday-invite-thumb.jpg' },
-    { name:'Fully Furnished 2', ratio:'vrt', url: VIDEO_BASE + 'Fully%20Furnished%202.mp4', size:'408MB', thumb: THUMB_BASE + 'fully-furnished-2-thumb.jpg' },
+    { name:'Sunday Invite',     ratio:'vrt',  url: VIDEO_BASE + 'Sunday%20Invite.mp4',       size:'134MB', thumb: THUMB_BASE + 'sunday-invite-thumb.jpg' },
+    { name:'Fully Furnished 2', ratio:'vrt',  url: VIDEO_BASE + 'Fully%20Furnished%202.mp4', size:'408MB', thumb: THUMB_BASE + 'fully-furnished-2-thumb.jpg' },
     { name:'Draft Invite',      ratio:'land', url: VIDEO_BASE + 'draft%20invite%2002.15-1920.mp4', size:'26MB', thumb: THUMB_BASE + 'draft-invite-thumb.jpg' },
+    { name:'ACCESS Recap (Social)', ratio:'land', url: VIDEO_BASE + 'ACCESS%202819%20Recap%20Social.mp4', size:'57MB', thumb: THUMB_BASE + 'access-recap-social-thumb.jpg' },
+    { name:'ACCESS Recap (Web)',    ratio:'land', url: VIDEO_BASE + 'ACCESS%202819%20Recap%20Web.mp4',    size:'57MB', thumb: THUMB_BASE + 'access-recap-web-thumb.jpg' },
   ],
   'vid-sq':     [],
   'dd-ig-post':  [
@@ -67,8 +73,10 @@ const ASSETS = {
     { name:'Community Becomes Family', ratio:'sq', url: THUMB_BASE + 'community-family-post.jpg',  size:'1.2MB', thumb: THUMB_BASE + 'community-family-post.jpg' },
   ],
   'dd-video':    [
-    { name:'Sunday Invite',     ratio:'vrt', url: VIDEO_BASE + 'Sunday%20Invite.mp4',       size:'134MB', thumb: THUMB_BASE + 'sunday-invite-thumb.jpg' },
-    { name:'Fully Furnished 2', ratio:'vrt', url: VIDEO_BASE + 'Fully%20Furnished%202.mp4', size:'408MB', thumb: THUMB_BASE + 'fully-furnished-2-thumb.jpg' },
+    { name:'Sunday Invite',     ratio:'vrt',  url: VIDEO_BASE + 'Sunday%20Invite.mp4',       size:'134MB', thumb: THUMB_BASE + 'sunday-invite-thumb.jpg' },
+    { name:'Fully Furnished 2', ratio:'vrt',  url: VIDEO_BASE + 'Fully%20Furnished%202.mp4', size:'408MB', thumb: THUMB_BASE + 'fully-furnished-2-thumb.jpg' },
     { name:'Draft Invite',      ratio:'land', url: VIDEO_BASE + 'draft%20invite%2002.15-1920.mp4', size:'26MB', thumb: THUMB_BASE + 'draft-invite-thumb.jpg' },
+    { name:'ACCESS Recap (Social)', ratio:'land', url: VIDEO_BASE + 'ACCESS%202819%20Recap%20Social.mp4', size:'57MB', thumb: THUMB_BASE + 'access-recap-social-thumb.jpg' },
+    { name:'ACCESS Recap (Web)',    ratio:'land', url: VIDEO_BASE + 'ACCESS%202819%20Recap%20Web.mp4',    size:'57MB', thumb: THUMB_BASE + 'access-recap-web-thumb.jpg' },
   ],
 };
