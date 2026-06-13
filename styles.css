@@ -437,6 +437,12 @@ html { scroll-behavior: smooth; }
 .contend-by { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(247,244,239,0.65); }
 .contend-retailers { font-size: 12px; color: var(--muted); margin-bottom: 14px; letter-spacing: 0.01em; }
 @media (max-width: 700px) { .more-grid { grid-template-columns: 1fr; } }
+/* On phones, any grid holding landscape (16:9) cards goes single-column so the
+   graphics are full-width and legible (2-up made them ~94px tall). Portrait/square
+   grids keep their 2-up layout. */
+@media (max-width: 700px) {
+  .asset-grid:has(.thumb.lnd) { grid-template-columns: 1fr; }
+}
 
 /* ─── SERIES GRAPHIC (Fruit That Remains downloads) ────── */
 .series-graphic { background: var(--cream); padding: 56px 24px 4px; }
