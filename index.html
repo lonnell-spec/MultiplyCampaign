@@ -77,8 +77,18 @@
 <!-- SCRIPTURE BAR -->
 <div class="scripture-bar">Until All Have Heard — Matthew 28:19</div>
 
+<!-- SERIES GRAPHIC -->
+<section class="series-graphic" id="kit">
+  <div class="series-inner">
+    <div class="step-label">Download the Series Graphic</div>
+    <h2 class="series-title">Fruit That <em>Remains</em></h2>
+    <p class="series-sub">The series art, sized for every feed. Tap any size to download — then post it, story it, share it.</p>
+    <div class="asset-grid" id="grid-fruit-graphic"></div>
+  </div>
+</section>
+
 <!-- TABS -->
-<div class="tabs-wrap" id="kit">
+<div class="tabs-wrap">
   <div class="tabs-inner">
     <div class="tabs">
       <button class="tab-btn active" onclick="switchTab('instagram',this)">Instagram</button>
@@ -557,7 +567,7 @@ function showToast(msg) {
   clearTimeout(_tt); _tt = setTimeout(() => el.classList.remove('show'), 2600);
 }
 
-['ig-post','ig-story','tt-graphic','tt-video','fb-post','fb-story','vid-sunday','vid-outreach','vid-fca','dd-ig-post','dd-ig-story','dd-tiktok','dd-facebook','dd-video'].forEach(buildGrid);
+['fruit-graphic','ig-post','ig-story','tt-graphic','tt-video','fb-post','fb-story','vid-sunday','vid-outreach','vid-fca','dd-ig-post','dd-ig-story','dd-tiktok','dd-facebook','dd-video'].forEach(buildGrid);
 ['instagram','tiktok','facebook','digital'].forEach(buildCaptions);
 ['instagram','tiktok','facebook','video','digital'].forEach(buildHandles);
 </script>

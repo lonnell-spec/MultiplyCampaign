@@ -6,6 +6,12 @@ const THUMB_BASE = 'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/p
 const VIDEO_BASE = 'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/video/';
 
 const ASSETS = {
+  'fruit-graphic': [
+    { name:'Story · 9:16',  ratio:'vrt',      url: THUMB_BASE + 'fruit-9x16.jpg',                 size:'157KB', thumb: THUMB_BASE + 'fruit-9x16.jpg' },
+    { name:'Feed · 4:5',    ratio:'portrait', url: THUMB_BASE + 'fruit-4x5.jpg',                  size:'142KB', thumb: THUMB_BASE + 'fruit-4x5.jpg' },
+    { name:'Square · 1:1',  ratio:'sq',       url: THUMB_BASE + 'fruit-that-remains-square.jpg',  size:'179KB', thumb: THUMB_BASE + 'fruit-that-remains-square.jpg' },
+    { name:'Wide · 16:9',   ratio:'lnd',      url: THUMB_BASE + 'fruit-that-remains-wide.jpg',    size:'425KB', thumb: THUMB_BASE + 'fruit-that-remains-wide.jpg' },
+  ],
   'ig-post':    [
     { name:'One Invite',               ratio:'portrait', url: THUMB_BASE + 'one-invite-post.jpg',        size:'1.3MB', thumb: THUMB_BASE + 'one-invite-post.jpg' },
     { name:'Community Becomes Family', ratio:'portrait', url: THUMB_BASE + 'community-family-post.jpg',  size:'1.2MB', thumb: THUMB_BASE + 'community-family-post.jpg' },
@@ -60,11 +66,6 @@ const ASSETS = {
     { name:'Community Becomes Family', ratio:'portrait', url: THUMB_BASE + 'community-family-post.jpg',  size:'1.2MB', thumb: THUMB_BASE + 'community-family-post.jpg' },
   ],
   'dd-video':    [
-    { name:'Sunday Invite',     ratio:'vrt', url: VIDEO_BASE + 'sunday-invite-01.mp4',   size:'38MB', thumb: THUMB_BASE + 'sunday-invite-01-thumb.jpg' },
-    { name:'FCA Bible Study 1', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-01.mp4', size:'24MB', thumb: THUMB_BASE + 'fca-bible-study-01-thumb.jpg' },
-    { name:'FCA Bible Study 2', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-02.mp4', size:'19MB', thumb: THUMB_BASE + 'fca-bible-study-02-thumb.jpg' },
-    { name:'FCA Bible Study 3', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-03.mp4', size:'14MB', thumb: THUMB_BASE + 'fca-bible-study-03-thumb.jpg' },
-    { name:'FCA Bible Study 4', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-04.mp4', size:'12MB', thumb: THUMB_BASE + 'fca-bible-study-04-thumb.jpg' },
-    { name:'FCA Bible Study 5', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-05.mp4', size:'27MB', thumb: THUMB_BASE + 'fca-bible-study-05-thumb.jpg' },
+    { name:'Sunday Invite', ratio:'vrt', url: VIDEO_BASE + 'sunday-invite-01.mp4', size:'38MB', thumb: THUMB_BASE + 'sunday-invite-01-thumb.jpg' },
   ],
 };
