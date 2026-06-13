@@ -7,76 +7,64 @@ const VIDEO_BASE = 'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/p
 
 const ASSETS = {
   'ig-post':    [
-    { name:'Clothe The Culture',       ratio:'portrait', url: THUMB_BASE + 'clothe-culture-post.jpg',    size:'630KB', thumb: THUMB_BASE + 'clothe-culture-post.jpg' },
-    { name:'Support The Spread',       ratio:'portrait', url: THUMB_BASE + 'support-spread-post.jpg',    size:'858KB', thumb: THUMB_BASE + 'support-spread-post.jpg' },
     { name:'One Invite',               ratio:'portrait', url: THUMB_BASE + 'one-invite-post.jpg',        size:'1.3MB', thumb: THUMB_BASE + 'one-invite-post.jpg' },
     { name:'Community Becomes Family', ratio:'portrait', url: THUMB_BASE + 'community-family-post.jpg',  size:'1.2MB', thumb: THUMB_BASE + 'community-family-post.jpg' },
   ],
   'ig-story':   [
-    { name:'Clothe The Culture',       ratio:'vrt', url: THUMB_BASE + 'clothe-culture-story.jpg',   size:'987KB', thumb: THUMB_BASE + 'clothe-culture-story.jpg' },
-    { name:'Support The Spread',       ratio:'vrt', url: THUMB_BASE + 'support-spread-story.jpg',   size:'1.1MB', thumb: THUMB_BASE + 'support-spread-story.jpg' },
     { name:'One Invite',               ratio:'vrt', url: THUMB_BASE + 'one-invite-story.jpg',       size:'1.7MB', thumb: THUMB_BASE + 'one-invite-story.jpg' },
     { name:'Community Becomes Family', ratio:'vrt', url: THUMB_BASE + 'community-family-story.jpg', size:'1.7MB', thumb: THUMB_BASE + 'community-family-story.jpg' },
   ],
   'tt-graphic': [
-    { name:'Clothe The Culture',       ratio:'vrt', url: THUMB_BASE + 'clothe-culture-story.jpg',   size:'987KB', thumb: THUMB_BASE + 'clothe-culture-story.jpg' },
-    { name:'Support The Spread',       ratio:'vrt', url: THUMB_BASE + 'support-spread-story.jpg',   size:'1.1MB', thumb: THUMB_BASE + 'support-spread-story.jpg' },
     { name:'One Invite',               ratio:'vrt', url: THUMB_BASE + 'one-invite-story.jpg',       size:'1.7MB', thumb: THUMB_BASE + 'one-invite-story.jpg' },
     { name:'Community Becomes Family', ratio:'vrt', url: THUMB_BASE + 'community-family-story.jpg', size:'1.7MB', thumb: THUMB_BASE + 'community-family-story.jpg' },
   ],
   'tt-video':   [
-    { name:'Invite Video', ratio:'vrt',  url: VIDEO_BASE + 'Sunday%20Invite.mp4',       size:'134MB', thumb: THUMB_BASE + 'sunday-invite-thumb.jpg' },
-    { name:'Invite Video', ratio:'vrt',  url: VIDEO_BASE + 'Fully%20Furnished%202.mp4', size:'408MB', thumb: THUMB_BASE + 'fully-furnished-2-thumb.jpg' },
-    { name:'Invite Video', ratio:'land', url: VIDEO_BASE + 'draft%20invite%2002.15-1920.mp4', size:'26MB', thumb: THUMB_BASE + 'draft-invite-thumb.jpg' },
-    { name:'Invite Video', ratio:'land', url: VIDEO_BASE + 'ACCESS%202819%20Recap%20Social.mp4', size:'57MB', thumb: THUMB_BASE + 'access-recap-social-thumb.jpg' },
-    { name:'Invite Video', ratio:'land', url: VIDEO_BASE + 'ACCESS%202819%20Recap%20Web.mp4',    size:'57MB', thumb: THUMB_BASE + 'access-recap-web-thumb.jpg' },
+    { name:'Sunday Invite',     ratio:'vrt', url: VIDEO_BASE + 'sunday-invite-01.mp4',   size:'38MB', thumb: THUMB_BASE + 'sunday-invite-01-thumb.jpg' },
+    { name:'FCA Bible Study 1', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-01.mp4', size:'24MB', thumb: THUMB_BASE + 'fca-bible-study-01-thumb.jpg' },
+    { name:'FCA Bible Study 2', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-02.mp4', size:'19MB', thumb: THUMB_BASE + 'fca-bible-study-02-thumb.jpg' },
+    { name:'FCA Bible Study 3', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-03.mp4', size:'14MB', thumb: THUMB_BASE + 'fca-bible-study-03-thumb.jpg' },
+    { name:'FCA Bible Study 4', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-04.mp4', size:'12MB', thumb: THUMB_BASE + 'fca-bible-study-04-thumb.jpg' },
+    { name:'FCA Bible Study 5', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-05.mp4', size:'27MB', thumb: THUMB_BASE + 'fca-bible-study-05-thumb.jpg' },
   ],
   'fb-post':    [
-    { name:'Clothe The Culture',       ratio:'sq', url: THUMB_BASE + 'clothe-culture-post.jpg',    size:'630KB', thumb: THUMB_BASE + 'clothe-culture-post.jpg' },
-    { name:'Support The Spread',       ratio:'sq', url: THUMB_BASE + 'support-spread-post.jpg',    size:'858KB', thumb: THUMB_BASE + 'support-spread-post.jpg' },
-    { name:'One Invite',               ratio:'sq', url: THUMB_BASE + 'one-invite-post.jpg',        size:'1.3MB', thumb: THUMB_BASE + 'one-invite-post.jpg' },
-    { name:'Community Becomes Family', ratio:'sq', url: THUMB_BASE + 'community-family-post.jpg',  size:'1.2MB', thumb: THUMB_BASE + 'community-family-post.jpg' },
+    { name:'One Invite',               ratio:'portrait', url: THUMB_BASE + 'one-invite-post.jpg',        size:'1.3MB', thumb: THUMB_BASE + 'one-invite-post.jpg' },
+    { name:'Community Becomes Family', ratio:'portrait', url: THUMB_BASE + 'community-family-post.jpg',  size:'1.2MB', thumb: THUMB_BASE + 'community-family-post.jpg' },
   ],
   'fb-story':   [
-    { name:'Clothe The Culture',       ratio:'vrt', url: THUMB_BASE + 'clothe-culture-story.jpg',   size:'987KB', thumb: THUMB_BASE + 'clothe-culture-story.jpg' },
-    { name:'Support The Spread',       ratio:'vrt', url: THUMB_BASE + 'support-spread-story.jpg',   size:'1.1MB', thumb: THUMB_BASE + 'support-spread-story.jpg' },
     { name:'One Invite',               ratio:'vrt', url: THUMB_BASE + 'one-invite-story.jpg',       size:'1.7MB', thumb: THUMB_BASE + 'one-invite-story.jpg' },
     { name:'Community Becomes Family', ratio:'vrt', url: THUMB_BASE + 'community-family-story.jpg', size:'1.7MB', thumb: THUMB_BASE + 'community-family-story.jpg' },
   ],
-  'vid-land':   [
-    { name:'Invite Video', ratio:'land', url: VIDEO_BASE + 'draft%20invite%2002.15-1920.mp4', size:'26MB', thumb: THUMB_BASE + 'draft-invite-thumb.jpg' },
-    { name:'Invite Video', ratio:'land', url: VIDEO_BASE + 'ACCESS%202819%20Recap%20Social.mp4', size:'57MB', thumb: THUMB_BASE + 'access-recap-social-thumb.jpg' },
-    { name:'Invite Video', ratio:'land', url: VIDEO_BASE + 'ACCESS%202819%20Recap%20Web.mp4',    size:'57MB', thumb: THUMB_BASE + 'access-recap-web-thumb.jpg' },
+  'vid-sunday':   [
+    { name:'Sunday Invite', ratio:'vrt', url: VIDEO_BASE + 'sunday-invite-01.mp4', size:'38MB', thumb: THUMB_BASE + 'sunday-invite-01-thumb.jpg' },
   ],
-  'vid-vert':   [
-    { name:'Invite Video', ratio:'vrt',  url: VIDEO_BASE + 'Sunday%20Invite.mp4',       size:'134MB', thumb: THUMB_BASE + 'sunday-invite-thumb.jpg' },
-    { name:'Invite Video', ratio:'vrt',  url: VIDEO_BASE + 'Fully%20Furnished%202.mp4', size:'408MB', thumb: THUMB_BASE + 'fully-furnished-2-thumb.jpg' },
-    { name:'Invite Video', ratio:'land', url: VIDEO_BASE + 'draft%20invite%2002.15-1920.mp4', size:'26MB', thumb: THUMB_BASE + 'draft-invite-thumb.jpg' },
-    { name:'Invite Video', ratio:'land', url: VIDEO_BASE + 'ACCESS%202819%20Recap%20Social.mp4', size:'57MB', thumb: THUMB_BASE + 'access-recap-social-thumb.jpg' },
-    { name:'Invite Video', ratio:'land', url: VIDEO_BASE + 'ACCESS%202819%20Recap%20Web.mp4',    size:'57MB', thumb: THUMB_BASE + 'access-recap-web-thumb.jpg' },
+  'vid-outreach': [
+    { name:'Outreach', ratio:'lnd', url: VIDEO_BASE + 'outreach-01.mp4', size:'16MB', thumb: THUMB_BASE + 'outreach-01-thumb.jpg' },
   ],
-  'vid-sq':     [],
+  'vid-fca':      [
+    { name:'FCA Bible Study 1', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-01.mp4', size:'24MB', thumb: THUMB_BASE + 'fca-bible-study-01-thumb.jpg' },
+    { name:'FCA Bible Study 2', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-02.mp4', size:'19MB', thumb: THUMB_BASE + 'fca-bible-study-02-thumb.jpg' },
+    { name:'FCA Bible Study 3', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-03.mp4', size:'14MB', thumb: THUMB_BASE + 'fca-bible-study-03-thumb.jpg' },
+    { name:'FCA Bible Study 4', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-04.mp4', size:'12MB', thumb: THUMB_BASE + 'fca-bible-study-04-thumb.jpg' },
+    { name:'FCA Bible Study 5', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-05.mp4', size:'27MB', thumb: THUMB_BASE + 'fca-bible-study-05-thumb.jpg' },
+  ],
   'dd-ig-post':  [
-    { name:'Clothe The Culture',       ratio:'sq', url: THUMB_BASE + 'clothe-culture-post.jpg',    size:'630KB', thumb: THUMB_BASE + 'clothe-culture-post.jpg' },
-    { name:'Community Becomes Family', ratio:'sq', url: THUMB_BASE + 'community-family-post.jpg',  size:'1.2MB', thumb: THUMB_BASE + 'community-family-post.jpg' },
+    { name:'Community Becomes Family', ratio:'portrait', url: THUMB_BASE + 'community-family-post.jpg',  size:'1.2MB', thumb: THUMB_BASE + 'community-family-post.jpg' },
   ],
   'dd-ig-story': [
-    { name:'Clothe The Culture',       ratio:'vrt', url: THUMB_BASE + 'clothe-culture-story.jpg',   size:'987KB', thumb: THUMB_BASE + 'clothe-culture-story.jpg' },
     { name:'Community Becomes Family', ratio:'vrt', url: THUMB_BASE + 'community-family-story.jpg', size:'1.7MB', thumb: THUMB_BASE + 'community-family-story.jpg' },
   ],
   'dd-tiktok':   [
-    { name:'Clothe The Culture',       ratio:'vrt', url: THUMB_BASE + 'clothe-culture-story.jpg',   size:'987KB', thumb: THUMB_BASE + 'clothe-culture-story.jpg' },
     { name:'Community Becomes Family', ratio:'vrt', url: THUMB_BASE + 'community-family-story.jpg', size:'1.7MB', thumb: THUMB_BASE + 'community-family-story.jpg' },
   ],
   'dd-facebook': [
-    { name:'Clothe The Culture',       ratio:'sq', url: THUMB_BASE + 'clothe-culture-post.jpg',    size:'630KB', thumb: THUMB_BASE + 'clothe-culture-post.jpg' },
-    { name:'Community Becomes Family', ratio:'sq', url: THUMB_BASE + 'community-family-post.jpg',  size:'1.2MB', thumb: THUMB_BASE + 'community-family-post.jpg' },
+    { name:'Community Becomes Family', ratio:'portrait', url: THUMB_BASE + 'community-family-post.jpg',  size:'1.2MB', thumb: THUMB_BASE + 'community-family-post.jpg' },
   ],
   'dd-video':    [
-    { name:'Invite Video', ratio:'vrt',  url: VIDEO_BASE + 'Sunday%20Invite.mp4',       size:'134MB', thumb: THUMB_BASE + 'sunday-invite-thumb.jpg' },
-    { name:'Invite Video', ratio:'vrt',  url: VIDEO_BASE + 'Fully%20Furnished%202.mp4', size:'408MB', thumb: THUMB_BASE + 'fully-furnished-2-thumb.jpg' },
-    { name:'Invite Video', ratio:'land', url: VIDEO_BASE + 'draft%20invite%2002.15-1920.mp4', size:'26MB', thumb: THUMB_BASE + 'draft-invite-thumb.jpg' },
-    { name:'Invite Video', ratio:'land', url: VIDEO_BASE + 'ACCESS%202819%20Recap%20Social.mp4', size:'57MB', thumb: THUMB_BASE + 'access-recap-social-thumb.jpg' },
-    { name:'Invite Video', ratio:'land', url: VIDEO_BASE + 'ACCESS%202819%20Recap%20Web.mp4',    size:'57MB', thumb: THUMB_BASE + 'access-recap-web-thumb.jpg' },
+    { name:'Sunday Invite',     ratio:'vrt', url: VIDEO_BASE + 'sunday-invite-01.mp4',   size:'38MB', thumb: THUMB_BASE + 'sunday-invite-01-thumb.jpg' },
+    { name:'FCA Bible Study 1', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-01.mp4', size:'24MB', thumb: THUMB_BASE + 'fca-bible-study-01-thumb.jpg' },
+    { name:'FCA Bible Study 2', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-02.mp4', size:'19MB', thumb: THUMB_BASE + 'fca-bible-study-02-thumb.jpg' },
+    { name:'FCA Bible Study 3', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-03.mp4', size:'14MB', thumb: THUMB_BASE + 'fca-bible-study-03-thumb.jpg' },
+    { name:'FCA Bible Study 4', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-04.mp4', size:'12MB', thumb: THUMB_BASE + 'fca-bible-study-04-thumb.jpg' },
+    { name:'FCA Bible Study 5', ratio:'vrt', url: VIDEO_BASE + 'fca-bible-study-05.mp4', size:'27MB', thumb: THUMB_BASE + 'fca-bible-study-05-thumb.jpg' },
   ],
 };
