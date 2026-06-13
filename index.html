@@ -100,6 +100,51 @@
   </div>
 </div>
 
+<!-- SHARE AN INVITATION -->
+<section class="series-graphic" id="invites">
+  <div class="series-inner">
+    <div class="step-label">Share an Invitation</div>
+    <h2 class="series-title">Invite <em>Graphics</em></h2>
+    <p class="series-sub">Current 2819 invites, ready to post. Download one and send it to someone by name.</p>
+    <div class="asset-grid" id="grid-invite-graphics"></div>
+  </div>
+</section>
+
+<!-- MORE FROM 2819 -->
+<section class="more">
+  <div class="more-inner">
+    <div class="more-head">
+      <div class="block-label">More from 2819</div>
+      <h2 class="more-title">Keep <em>Going</em></h2>
+      <p class="more-sub">The mission does not stop at a share. Stream the worship. Carry the message further.</p>
+    </div>
+    <div class="more-grid">
+      <a class="more-card" href="https://link.reachrecords.com/forchristalone" target="_blank" rel="noopener">
+        <div class="more-card-media">
+          <img src="https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/for-christ-alone.jpg" alt="For Christ Alone — 2819 Worship" loading="lazy">
+        </div>
+        <div class="more-card-body">
+          <div class="more-card-kicker">Now Streaming · 2819 Worship</div>
+          <div class="more-card-name">For Christ Alone</div>
+          <span class="more-card-cta">Stream the song →</span>
+        </div>
+      </a>
+      <a class="more-card" href="https://www.contendbook.com" target="_blank" rel="noopener">
+        <div class="more-card-media contend-art">
+          <span class="contend-mark">CONTEND</span>
+          <span class="contend-by">Philip Anthony Mitchell</span>
+        </div>
+        <div class="more-card-body">
+          <div class="more-card-kicker">Pre-order · 10.13.26</div>
+          <div class="more-card-name">Contend</div>
+          <p class="contend-retailers">Amazon · Audible · Barnes &amp; Noble · Target · Walmart</p>
+          <span class="more-card-cta">Pre-order the book →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- CONTENT -->
 <div class="content">
 
@@ -314,51 +359,6 @@
 
 </div>
 
-<!-- SHARE AN INVITATION -->
-<section class="series-graphic" id="invites">
-  <div class="series-inner">
-    <div class="step-label">Share an Invitation</div>
-    <h2 class="series-title">Invite <em>Graphics</em></h2>
-    <p class="series-sub">Current 2819 invites, ready to post. Download one and send it to someone by name.</p>
-    <div class="asset-grid" id="grid-invite-graphics"></div>
-  </div>
-</section>
-
-<!-- MORE FROM 2819 -->
-<section class="more">
-  <div class="more-inner">
-    <div class="more-head">
-      <div class="block-label">More from 2819</div>
-      <h2 class="more-title">Keep <em>Going</em></h2>
-      <p class="more-sub">The mission does not stop at a share. Stream the worship. Carry the message further.</p>
-    </div>
-    <div class="more-grid">
-      <a class="more-card" href="https://link.reachrecords.com/forchristalone" target="_blank" rel="noopener">
-        <div class="more-card-media">
-          <img src="https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/for-christ-alone.jpg" alt="For Christ Alone — 2819 Worship" loading="lazy">
-        </div>
-        <div class="more-card-body">
-          <div class="more-card-kicker">Now Streaming · 2819 Worship</div>
-          <div class="more-card-name">For Christ Alone</div>
-          <span class="more-card-cta">Stream the song →</span>
-        </div>
-      </a>
-      <a class="more-card" href="https://www.contendbook.com" target="_blank" rel="noopener">
-        <div class="more-card-media contend-art">
-          <span class="contend-mark">CONTEND</span>
-          <span class="contend-by">Philip Anthony Mitchell</span>
-        </div>
-        <div class="more-card-body">
-          <div class="more-card-kicker">Pre-order · 10.13.26</div>
-          <div class="more-card-name">Contend</div>
-          <p class="contend-retailers">Amazon · Audible · Barnes &amp; Noble · Target · Walmart</p>
-          <span class="more-card-cta">Pre-order the book →</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
@@ -486,7 +486,10 @@ function switchTab(platform, btn) {
   document.getElementById('panel-' + platform).classList.add('active');
   const tabsEl = document.querySelector('.tabs-wrap');
   const navH = document.querySelector('.nav')?.offsetHeight || 48;
-  window.scrollTo({ top: tabsEl.offsetTop - navH, behavior: 'smooth' });
+  // Content panels now sit below the Invite/Keep-Going sections — scroll to the
+  // active panel content so a tab click reveals it just beneath the sticky tab bar.
+  const content = document.querySelector('.content');
+  window.scrollTo({ top: content.offsetTop - navH - tabsEl.offsetHeight - 4, behavior: 'smooth' });
 }
 
 async function triggerDownload(url, name, btn) {
