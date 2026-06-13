@@ -444,3 +444,6 @@ html { scroll-behavior: smooth; }
 .series-title { font-size: clamp(30px, 5vw, 48px); font-weight: 900; letter-spacing: -0.03em; line-height: 0.95; color: var(--black); margin: 8px 0 10px; }
 .series-title em { font-style: normal; color: var(--red); }
 .series-sub { font-size: clamp(14px, 1.6vw, 17px); color: var(--muted); max-width: 540px; line-height: 1.6; margin-bottom: 24px; }
+/* Tame tall 9:16 previews in the Fruit download grid so cards sit proportionately
+   next to the square (preview box only — the downloaded file stays full 9:16). */
+.series-graphic .thumb.vrt { aspect-ratio: 4 / 5; }

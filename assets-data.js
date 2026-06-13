@@ -7,10 +7,8 @@ const VIDEO_BASE = 'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/p
 
 const ASSETS = {
   'fruit-graphic': [
-    { name:'Story · 9:16',  ratio:'vrt',      url: THUMB_BASE + 'fruit-9x16.jpg',                 size:'157KB', thumb: THUMB_BASE + 'fruit-9x16.jpg' },
-    { name:'Feed · 4:5',    ratio:'portrait', url: THUMB_BASE + 'fruit-4x5.jpg',                  size:'142KB', thumb: THUMB_BASE + 'fruit-4x5.jpg' },
-    { name:'Square · 1:1',  ratio:'sq',       url: THUMB_BASE + 'fruit-that-remains-square.jpg',  size:'179KB', thumb: THUMB_BASE + 'fruit-that-remains-square.jpg' },
-    { name:'Wide · 16:9',   ratio:'lnd',      url: THUMB_BASE + 'fruit-that-remains-wide.jpg',    size:'425KB', thumb: THUMB_BASE + 'fruit-that-remains-wide.jpg' },
+    { name:'Story · 9:16',  ratio:'vrt', url: THUMB_BASE + 'fruit-9x16.jpg',                 size:'157KB', thumb: THUMB_BASE + 'fruit-9x16.jpg' },
+    { name:'Square · 1:1',  ratio:'sq',  url: THUMB_BASE + 'fruit-that-remains-square.jpg',  size:'179KB', thumb: THUMB_BASE + 'fruit-that-remains-square.jpg' },
   ],
   'ig-post':    [
     { name:'One Invite',               ratio:'portrait', url: THUMB_BASE + 'one-invite-post.jpg',        size:'1.3MB', thumb: THUMB_BASE + 'one-invite-post.jpg' },
