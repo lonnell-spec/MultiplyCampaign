@@ -68,4 +68,10 @@ const ASSETS = {
   'dd-video':    [
     { name:'Sunday Invite', ratio:'vrt', url: VIDEO_BASE + 'sunday-invite-01.mp4', size:'38MB', thumb: THUMB_BASE + 'sunday-invite-01-thumb.jpg' },
   ],
+  'invite-graphics': [
+    { name:'One Invite Can Change a Life', ratio:'lnd', url: THUMB_BASE + 'invite-one-life.jpg',     size:'164KB', thumb: THUMB_BASE + 'invite-one-life.jpg' },
+    { name:'Serve M25 · Month of Service', ratio:'lnd', url: THUMB_BASE + 'invite-serve-m25.jpg',    size:'304KB', thumb: THUMB_BASE + 'invite-serve-m25.jpg' },
+    { name:'Baptism Sunday · Aug 23',      ratio:'lnd', url: THUMB_BASE + 'invite-baptism.jpg',      size:'311KB', thumb: THUMB_BASE + 'invite-baptism.jpg' },
+    { name:'Read. Reflect. Respond.',      ratio:'lnd', url: THUMB_BASE + 'invite-read-respond.jpg', size:'226KB', thumb: THUMB_BASE + 'invite-read-respond.jpg' },
+  ],
 };
