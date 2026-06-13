@@ -385,8 +385,12 @@ html { scroll-behavior: smooth; }
   .content { padding: 0 20px 0; }
   .platform-intro { padding: 28px 0 24px; margin-bottom: 28px; }
   .platform-intro h2 { font-size: 26px; }
-  .tabs { padding: 0 20px; }
-  .tab-btn { padding: 14px 14px 12px; font-size: 10px; }
+  /* Phones: fit all 5 tabs on one screen (no sideways scroll) — equal-width tabs,
+     and shorten "Digital Disciple" -> "Digital" so it fits. */
+  .tabs { padding: 0 6px; overflow-x: hidden; }
+  .tab-btn { flex: 1 1 0; min-width: 0; padding: 13px 2px 11px; font-size: 10px; letter-spacing: 0; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .dd-word { display: none; }
+  .dd-tab::before { margin-right: 3px; }
   .asset-grid { gap: 8px; }
   .card-foot { opacity: 1; padding: 10px; }
   .dl-btn { padding: 7px 10px; font-size: 9px; }
