@@ -220,9 +220,15 @@
       <p>This message belongs everywhere. Download an invite and put it in front of someone who needs to hear it.</p>
     </div>
     <div class="step-label">Step 1 — Download an Invite</div>
-    <div class="block-label">Sunday Invite <span class="format-tag">9:16</span></div>
+    <div class="block-label">Sunday Invite <span class="format-tag">16:9</span></div>
     <div class="asset-grid" id="grid-vid-sunday"></div>
-    <div class="block-label">Outreach <span class="format-tag">16:9</span></div>
+    <div class="block-label">Reels &amp; Shorts <span class="format-tag">9:16</span></div>
+    <div class="asset-grid" id="grid-vid-shorts"></div>
+    <div class="block-label">Stories of Life Change <span class="format-tag">16:9</span></div>
+    <div class="asset-grid" id="grid-vid-stories"></div>
+    <div class="block-label">The Cross · Film <span class="format-tag">4:3</span></div>
+    <div class="asset-grid" id="grid-vid-cross"></div>
+    <div class="block-label">Outreach &amp; Community <span class="format-tag">16:9</span></div>
     <div class="asset-grid" id="grid-vid-outreach"></div>
     <div class="block-label">FCA Bible Study <span class="format-tag">9:16</span></div>
     <div class="asset-grid" id="grid-vid-fca"></div>
@@ -267,7 +273,7 @@
         <div class="asset-grid" id="grid-dd-facebook"></div>
       </div>
     </div>
-    <div class="block-label">Video <span class="format-tag">9:16</span></div>
+    <div class="block-label">Video <span class="format-tag">16:9 + 9:16</span></div>
     <div class="asset-grid" id="grid-dd-video"></div>
     <div class="step-label">Step 2 — Add a Caption</div>
     <div class="caption-block"><div class="caption-list" id="caps-digital"></div></div>
@@ -572,7 +578,7 @@ function showToast(msg) {
   clearTimeout(_tt); _tt = setTimeout(() => el.classList.remove('show'), 2600);
 }
 
-['fruit-graphic','ig-post','ig-story','tt-graphic','tt-video','fb-post','fb-story','vid-sunday','vid-outreach','vid-fca','dd-ig-post','dd-ig-story','dd-tiktok','dd-facebook','dd-video','invite-graphics'].forEach(buildGrid);
+['fruit-graphic','ig-post','ig-story','tt-graphic','tt-video','fb-post','fb-story','vid-sunday','vid-shorts','vid-stories','vid-cross','vid-outreach','vid-fca','dd-ig-post','dd-ig-story','dd-tiktok','dd-facebook','dd-video','invite-graphics'].forEach(buildGrid);
 ['instagram','tiktok','facebook','digital'].forEach(buildCaptions);
 ['instagram','tiktok','facebook','video','digital'].forEach(buildHandles);
 </script>
