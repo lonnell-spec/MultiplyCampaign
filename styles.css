@@ -196,13 +196,16 @@ body::after {
 .hero-date { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); }
 .hero-loc { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; margin-top: 2px; }
 
-/* ─── FRUIT THAT REMAINS HERO ──────────────────────────── */
+/* ─── SERIES HERO (In Christ) ──────────────────────────── */
 html { scroll-behavior: smooth; }
 .hero-fruit { position: relative; background: var(--black); overflow: hidden; line-height: 0; }
-.hero-fruit picture { display: block; width: 100%; }
-.hero-fruit-img { display: block; width: 100%; height: min(86vh, 780px); object-fit: cover; object-position: center 42%; }
-.hero-fruit-grad { position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(to bottom, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0) 20%, rgba(10,10,10,0) 58%, rgba(10,10,10,0.88) 100%); }
+/* The series art is a 4:5 poster with type near its edges, so it is shown whole
+   (contain) over a pre-blurred copy of itself instead of being cropped to fill. */
+.hero-fruit-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-fruit-img { position: relative; z-index: 1; display: block; margin: 0 auto; width: auto; max-width: 100%;
+  height: min(86vh, 780px); object-fit: contain; box-shadow: 0 30px 80px rgba(0,0,0,0.45); }
+.hero-fruit-grad { position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(to bottom, rgba(10,10,10,0) 0%, rgba(10,10,10,0) 82%, rgba(10,10,10,0.6) 100%); }
 .hero-fruit-overlay { position: absolute; left: 50%; transform: translateX(-50%); bottom: 0; z-index: 2;
   width: 100%; max-width: 1200px; box-sizing: border-box;
   display: flex; justify-content: space-between; align-items: center; gap: 16px;
@@ -216,10 +219,11 @@ html { scroll-behavior: smooth; }
 .hero-fruit-cta span { transition: transform 220ms var(--ease-out); }
 .hero-fruit-cta:hover span { transform: translateY(3px); }
 @media (max-width: 700px) {
-  /* square container matches the square art exactly → no edge cropping of the title */
-  .hero-fruit-img { height: 100vw; object-position: center; }
-  .hero-fruit-grad { background: linear-gradient(to bottom, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0) 18%, rgba(10,10,10,0) 62%, rgba(10,10,10,0.82) 100%); }
-  .hero-fruit-overlay { flex-direction: column; align-items: stretch; text-align: center; gap: 12px; padding: 18px 20px; }
+  /* poster fills the width at its own 4:5 ratio; the CTA sits below it so it never covers the art's bottom line */
+  .hero-fruit-img { width: 100%; height: auto; aspect-ratio: 4 / 5; box-shadow: none; }
+  .hero-fruit-grad, .hero-fruit-bg { display: none; }
+  .hero-fruit-overlay { position: relative; left: auto; transform: none; z-index: 2;
+    flex-direction: column; align-items: stretch; text-align: center; gap: 12px; padding: 18px 20px; background: var(--black); }
   .hero-fruit-cta { justify-content: center; }
 }
 

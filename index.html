@@ -47,10 +47,8 @@
 
 <!-- HERO -->
 <section class="hero-fruit">
-  <picture>
-    <source media="(max-width:700px)" srcset="https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/fruit-that-remains-square.jpg">
-    <img class="hero-fruit-img" src="https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/fruit-that-remains-wide.jpg" alt="Fruit That Remains — I am the vine, you are the branches. John 15." loading="eager" fetchpriority="high">
-  </picture>
+  <img class="hero-fruit-bg" src="https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/in-christ-hero-bg.jpg" alt="" aria-hidden="true">
+  <img class="hero-fruit-img" src="https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/public/multiply-assets/thumbnails/in-christ-4x5.jpg" alt="In Christ. Chosen. Redeemed. United. Formed. A study through Ephesians." width="1080" height="1350" loading="eager" fetchpriority="high">
   <div class="hero-fruit-grad"></div>
   <div class="hero-fruit-overlay">
     <p class="hero-fruit-eyebrow">2819 Church <span>·</span> Atlanta</p>
@@ -592,7 +590,7 @@ function showToast(msg) {
   if (!window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
 
-  // Hero — slow cinematic drift on the Fruit painting as you scroll past it
+  // Hero — slow cinematic drift on the series poster as you scroll past it
   gsap.to('.hero-fruit-img', {
     scale: 1.07, ease: 'none',
     scrollTrigger: { trigger: '.hero-fruit', start: 'top top', end: 'bottom top', scrub: true }
