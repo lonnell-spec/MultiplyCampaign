@@ -7,8 +7,9 @@ const VIDEO_BASE = 'https://qtutkgyklxgcdmmivipp.supabase.co/storage/v1/object/p
 
 const ASSETS = {
   'fruit-graphic': [
-    { name:'Story · 9:16',  ratio:'vrt', url: THUMB_BASE + 'fruit-9x16.jpg',                 size:'157KB', thumb: THUMB_BASE + 'fruit-9x16.jpg' },
-    { name:'Square · 1:1',  ratio:'sq',  url: THUMB_BASE + 'fruit-that-remains-square.jpg',  size:'179KB', thumb: THUMB_BASE + 'fruit-that-remains-square.jpg' },
+    { name:'Post · 4:5',    ratio:'portrait', url: THUMB_BASE + 'in-christ-4x5.jpg',  size:'500KB', thumb: THUMB_BASE + 'in-christ-4x5.jpg' },
+    { name:'Story · 9:16',  ratio:'vrt',      url: THUMB_BASE + 'in-christ-9x16.jpg', size:'429KB', thumb: THUMB_BASE + 'in-christ-9x16.jpg' },
+    { name:'Square · 1:1',  ratio:'sq',       url: THUMB_BASE + 'in-christ-1x1.jpg',  size:'239KB', thumb: THUMB_BASE + 'in-christ-1x1.jpg' },
   ],
   'ig-post':    [
     { name:'One Invite',               ratio:'portrait', url: THUMB_BASE + 'one-invite-post.jpg',        size:'1.3MB', thumb: THUMB_BASE + 'one-invite-post.jpg' },
